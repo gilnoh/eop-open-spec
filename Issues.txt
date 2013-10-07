@@ -1,0 +1,15 @@
+In this text file, some issues will be kept for future references. 
+
+* Mentioning Work Packages
+- Issue: In some sections, we can't avoid referring Work Packages (like WP4 will provide single implementation of "Mode Helper", or Knowledge Inquisition WP on knowledge interfaces, etc). 
+- Proposal: Let's mention them as they are, possibly with reference on proposal document.  
+
+* Mentioning existing systems and component report 
+- Issue: Some sections can be more naturally written with references to the existing systems and their reports --- like mentioning of "filtering-type-EDAs" of TIE, etc. 
+- Proposal: Let's put the documents in some space accessible with a URI (accessible only for internal members) and refer them properly, but *minimally*. 
+
+* UIMA - how much to describe about it?  
+- Issue: Linguistic analysis components will be described as UIMA components. But to understand those sections one has to spend enough time on UIMA. For example, sentences like "EDA implementers should provide suitable linguistic analysis pipeline as a aggregated analysis engine (AAE, UIMA term), and/or collection provide engine (CPE, also UIMA term))"; How much should we describe what CPE or AE are? 
+- Proposal: Minimally, and refer to proper UIMA documents. Open up the section with, "UIMA terminologies" and simply describe them with references. Warn the reader that he/she has to read UIMA documents for proper understanding of UIMA concepts and method of building UIMa components. 
+
+* 

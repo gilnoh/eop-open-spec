@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/slides/html
+END
+jscript.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/slides/html/jscript.xsl
+END
+ChangeLog
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/slides/html/ChangeLog
+END
+default.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/slides/html/default.xsl
+END
+flat.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/slides/html/flat.xsl
+END
+css.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/slides/html/css.xsl
+END
+param.xml
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/slides/html/param.xml
+END
+w3c.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/slides/html/w3c.xsl
+END
+param.html
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/slides/html/param.html
+END
+param.xweb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/slides/html/param.xweb
+END
+param.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/slides/html/param.xsl
+END
+graphics.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/slides/html/graphics.xsl
+END
+plain.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/slides/html/plain.xsl
+END
+vslides.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/slides/html/vslides.xsl
+END
+slides-common.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/slides/html/slides-common.xsl
+END
+tables.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/slides/html/tables.xsl
+END
+frames.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/slides/html/frames.xsl
+END

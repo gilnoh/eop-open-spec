@@ -1,0 +1,341 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml
+END
+verbatim.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/verbatim.xsl
+END
+onechunk.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/onechunk.xsl
+END
+autoidx.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/autoidx.xsl
+END
+titlepage.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/titlepage.xsl
+END
+inline.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/inline.xsl
+END
+chunktoc.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/chunktoc.xsl
+END
+profile-chunk-code.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/profile-chunk-code.xsl
+END
+formal.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/formal.xsl
+END
+chunk-code.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/chunk-code.xsl
+END
+ChangeLog
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/ChangeLog
+END
+maketoc.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/maketoc.xsl
+END
+division.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/division.xsl
+END
+html-rtf.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/html-rtf.xsl
+END
+changebars.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/changebars.xsl
+END
+annotations.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/annotations.xsl
+END
+oldchunker.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/oldchunker.xsl
+END
+refentry.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/refentry.xsl
+END
+lists.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/lists.xsl
+END
+chunker.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/chunker.xsl
+END
+graphics.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/graphics.xsl
+END
+qandaset.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/qandaset.xsl
+END
+param.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/param.xsl
+END
+profile-chunk.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/profile-chunk.xsl
+END
+chunk.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/chunk.xsl
+END
+ebnf.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/ebnf.xsl
+END
+titlepage.templates.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/titlepage.templates.xsl
+END
+autotoc.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/autotoc.xsl
+END
+profile-docbook.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/profile-docbook.xsl
+END
+autoidx-ng.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/autoidx-ng.xsl
+END
+docbook.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/docbook.xsl
+END
+toc.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/toc.xsl
+END
+chunkfast.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/chunkfast.xsl
+END
+table.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/table.xsl
+END
+sections.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/sections.xsl
+END
+math.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/math.xsl
+END
+block.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/block.xsl
+END
+info.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/info.xsl
+END
+footnote.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/footnote.xsl
+END
+admon.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/admon.xsl
+END
+chunk-common.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/chunk-common.xsl
+END
+biblio.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/biblio.xsl
+END
+component.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/component.xsl
+END
+task.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/task.xsl
+END
+callout.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/callout.xsl
+END
+html2xhtml.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/html2xhtml.xsl
+END
+glossary.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/glossary.xsl
+END
+html.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/html.xsl
+END
+xref.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/xref.xsl
+END
+docbookng.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/docbookng.xsl
+END
+htmltbl.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/htmltbl.xsl
+END
+manifest.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/manifest.xsl
+END
+index.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/index.xsl
+END
+keywords.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/keywords.xsl
+END
+synop.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/synop.xsl
+END
+pi.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/pi.xsl
+END
+profile-onechunk.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/xhtml/profile-onechunk.xsl
+END

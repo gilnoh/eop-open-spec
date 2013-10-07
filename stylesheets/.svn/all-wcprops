@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/excitement/!svn/ver/353/specification/stylesheets
+END
+readme.txt
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/excitement/!svn/ver/1/specification/stylesheets/readme.txt
+END
+ibexconfig.xml
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/excitement/!svn/ver/1/specification/stylesheets/ibexconfig.xml
+END
+titlepage.templates-fo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/excitement/!svn/ver/1/specification/stylesheets/titlepage.templates-fo.xml
+END
+titlepage.templates-html.xml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/excitement/!svn/ver/1/specification/stylesheets/titlepage.templates-html.xml
+END
+oasis-specification-fo-manifest.xml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/excitement/!svn/ver/1/specification/stylesheets/oasis-specification-fo-manifest.xml
+END
+oasis-specification-html-offline.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/excitement/!svn/ver/10/specification/stylesheets/oasis-specification-html-offline.xsl
+END
+oasis-specification-html.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/excitement/!svn/ver/1427/specification/stylesheets/oasis-specification-html.xsl
+END
+oasis-specification-fo-a4.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/excitement/!svn/ver/1427/specification/stylesheets/oasis-specification-fo-a4.xsl
+END
+titlepage-fo.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/excitement/!svn/ver/1/specification/stylesheets/titlepage-fo.xsl
+END
+titlepage-html.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/excitement/!svn/ver/1/specification/stylesheets/titlepage-html.xsl
+END
+xslfo-xml-pdf.bat
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/excitement/!svn/ver/1/specification/stylesheets/xslfo-xml-pdf.bat
+END
+oasis-specification-fo-us.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/excitement/!svn/ver/1/specification/stylesheets/oasis-specification-fo-us.xsl
+END

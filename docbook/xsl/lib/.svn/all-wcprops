@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/lib
+END
+ChangeLog
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/lib/ChangeLog
+END
+lib.xweb
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/lib/lib.xweb
+END
+lib.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/lib/lib.xsl
+END
+lib.xml
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/lib/lib.xml
+END

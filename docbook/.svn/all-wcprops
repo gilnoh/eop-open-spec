@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/excitement/!svn/ver/12/specification/docbook
+END
+docbookx.dtd
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/excitement/!svn/ver/1/specification/docbook/docbookx.dtd
+END
+soextblx.dtd
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/excitement/!svn/ver/1/specification/docbook/soextblx.dtd
+END
+dbhierx.mod
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/excitement/!svn/ver/1/specification/docbook/dbhierx.mod
+END
+dbgenent.mod
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/excitement/!svn/ver/1/specification/docbook/dbgenent.mod
+END
+dbcentx.mod
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/excitement/!svn/ver/1/specification/docbook/dbcentx.mod
+END
+dbpoolx.mod
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/excitement/!svn/ver/1/specification/docbook/dbpoolx.mod
+END
+calstblx.dtd
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/excitement/!svn/ver/1/specification/docbook/calstblx.dtd
+END
+docbook.cat
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/excitement/!svn/ver/1/specification/docbook/docbook.cat
+END
+catalog.xml
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/excitement/!svn/ver/1/specification/docbook/catalog.xml
+END
+dbnotnx.mod
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/excitement/!svn/ver/1/specification/docbook/dbnotnx.mod
+END
+htmltblx.mod
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/excitement/!svn/ver/1/specification/docbook/htmltblx.mod
+END

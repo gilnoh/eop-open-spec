@@ -1,0 +1,224 @@
+=====
+Spec v1.1.2 to v1.1.3 
+=====
+
+* Newly written subsection
+** Section 5.1.4 Common Configuration XML file format
+- XML file format is added in the specification. 
+
+* Added descriptions / clarifications 
+** Section 5.1.3. common configuration class 
+- removed LoadConfiguration (replaced by the constructor)
+- added a few more get/set methods, with clear notification that the
+  methods will be expanded as needed.  
+- some minor changes according to recent WP4 discussions. 
+
+=====
+Spec v1.1.1 to v1.1.2 
+=====
+The following text outlines changes of version 1.1.2 
+
+* Newly written section/subsections 
+
+** Section Scoring Component (4.5) 
+A generic component that provides "features". Now distance component 
+is an extension of this scoring component type. 
+
+** Subsection "interface LexicalResourceWithRelation" (4.7.3) 
+Now we removed TERuleRelation from LexicalRule and LexicalResource, and 
+moved them to part of "generic relational queries" of 
+LexicalResourceWithRelation. 
+It also now comes with related subsections like RelationSpecifiers. 
+
+* Added descriptions / clarifications 
+** Related to new sections 
+Related to the above three section/subsections: related figures and
+descriptions are changed in LexicalRule and DistanceComponent. 
+
+** Changes in interface Component
+Now the method initialize() is removed from the interface component.  
+
+=====
+Spec v1.1 to v1.1.1 
+=====
+The following text outlines changes related to version 1.1.1. 
+
+* Newly written subsections 
+
+** Section "Linguistic Analysis Pipeline (LAP)" added. (Sec 6)
+This is a new section that holds a single small subsection that
+describes interface =LAPAccess=. 
+
+** Sub-section "Lexical Resources with Own Relations" added. (Sec 4.6.3) 
+This is a new sub-section that describes interface
+=LexicalResourceWithOwnRelations=. 
+
+* Added descriptions / clarifications 
+
+** Minor bug patches and clarifications 
+- TEDecision removed from lexicalresource (was not synced with actual interface 
+source) 
+- string DEFAULT_CONFIDENT was corrected to double (was not synced with actual i
+nterface) 
+- Entailment.* types are now clarified: where to be put (EntailmentMetadata and 
+Pair in the CAS, Text in TextView, Hypothesis in HypothesisView) 
+- Metadata and Pair type supertype corrected (to TOP, was Annotation) 
+- Clarification added on "higher confident" on TEDecision. 
+
+=====
+Spec v1.0 to v1.1 
+=====
+The following parts outlines changes related to version 1.1.
+(rev. 158 was the spec 1.1) 
+
+Each issue ticket (#nn) can be queired by visiting the following link
+and enter the issue number (as "#nn"). 
+http://www.cl.uni-heidelberg.de/trac/excitement/search
+
+* Newly written subsections
+
+** subsection "common log" added. (#96)
+- In the Section 6.3
+
+** subsection "Concurrent Processing" added. (#108, #19, #45) 
+- In the Section 4.8
+- "multi-thread" issue. 
+- It adds a new interface EDAConcurrentProcessing, that gets a set of
+  TE problems and return a set of TEDecisions, with concurrent
+  processing. 
+
+** subsection "Two groups of LAP components added"
+- In the section 3.3.4.3 
+- Clarification section that describes, LAP components that knows TE
+  annotations, and generic components that does not. 
+  
+** subsection "Other cases: T-H from multiple documents, T-H on a same document" added. (#106)
+- In the section 3.3.4.4 
+- "T view / H view" naturally maps into two document (one for T, one
+  for H). The section describes how we can cope with different
+  situations like T on multiple documents, and T-H on the same
+  document. 
+- 3.3.4 generally revised = (from 3.3.4.1 to 3.3.4.4) 
+
+** subsection "Boundary of LAP and Entailment Core" 
+- In the section 6.5 
+- Summarizes the discussion covered untill now. 
+
+** sub-subsection "Rooms for improvment: EDA common training" added (#35, deferred issue #109 ) 
+- In the section 4.2.1.7 
+
+* Added Descriptions / Clarifications (Moved sections, added a paragraph, etc) 
+
+** Representation of Text and Hypothesis revised (more clear description) 
+- Section 3.3.4.1 and 3.3.4.2 revised: From Section 3.3.4.1 to 3.3.4.4
+  worth a new reading for all readers. 
+
+** "Auxiliary Layer" section added, and some interfaces moved into it (#101)  
+- Section 4.3 
+- "MultipleMode helper", "SinglePairProcessHelper (previously
+  EDARawTextWithLAP)", and "InitializationHelper"  now stays in
+  "Auxiliary Layer". 
+- #101 (Something that calls both EDA and LAP cannot be an
+  EDA interface) resolved.  EDARawTextWithLAP -> overhauled as an
+  independent "helper".  
+
+** (Clarification) List of interfaces that an EDA can implement 
+- In the section 4.2.1.8
+- At the end of EDABasic, a short section summarizes additional
+  interfaces that an EDA can implement. It also lists the list of
+  auxilary layer interfaces. 
+
+** EDAs can now implement "Reconfigurable". (#97) 
+- In the section 4.9.2, it also describes about EDA and reconfigurable  
+
+** (Clarification) "NonEntailment" relation of "LexicalRule" (#100). 
+- In the section 4.6.1.2
+- a description is added to clarify what is "NonEntailment" lexical
+  rule. (in the =TELexicalRelation= =NonEntailment= description. )  
+
+** (Clarification) About "Instance Subsection" of configuration (#105) 
+- In the section 5.1.2
+- a description with example is added to clarify what "instance"
+  configuration is about. 
+
+* Data type fixed / expanded 
+** BasicNode now has canonical types that reflects UIMA types (#90) 
+- Section 4.7.1.3 and Figure 11. 
+- enum DependencyRelationType, enum NamedEntity, enum CanonicalPosTag. 
+
+** EDA interface now becomes generic with types that extends TEDecision (#73)
+- TEDecision object description (removed Object returning getInfo,
+  added extension description) 
+- Generic affected parts of EDABasic, EDAMulti*, InitializationHelper, MutipleTHModeHelper 
+
+** "relation" (canonical relation) of Lexical Resource (#89) 
+- Section 4.6.1 (and 4.6.1.2) 
+- it is now a new enum type of its own (=TELexicalRelation=), which
+  can hold  =Entailment= or =NonEntailment=. It no longer reuses the
+  Decision enum of EDA decision. 
+
+** EntailmentMetadata now holds additional fields 
+- Section 3.3.4.1
+- it now holds TextDocumentID, TextCollectionID, HypothesisDocumentID,
+  and HypothesisCollectionID. 
+
+** type EXCITEMENT.temporal.TemporalExpression expanded (#103) 
+- Section 3.3.3.9 and Appendix A.9 
+- We now have expanded temporal expression with subtypes according to
+  TIMEX3-like classification.  
+
+** "alignment" type now has a string feature named "type". (#80) 
+- Section 3.3.3.10 
+- Alignment now has a string for additional info. 
+
+* Misc 
+** All runtime type check (RTTI) removed from core interface (#36) 
+- The only exception is JCas, where we cannot avoid using RTTI. 
+
+* WONTFIX Issues (Issues that were decided not to fix, after WP3 discussion) 
+** All name changes
+- Issue #99 ("Basic" names), #102 ("EDA"), #95 ("processXX")
+- WP3 ITD discussed these issues, but decided to keep on the current
+  names. See each issue ticket for discussion summaries.  
+
+** "Low-level" interface like getLHS, getRHS also for SyntacticResource 
+- Issue #6. See the ticket for the discussion summary. 
+
+** "High-Level" interface for LexicalResource 
+- Issue #7. See the ticket for the discussion summary. 
+
+** Web Interface - consideration for Web interface. (at least known incompatibilities should be avoided) 
+- Issue #34. No known incompatibilities with generic, thus we've
+  adopted generic interfaces even on EDA. The issue for now (conflict
+  with Generic) is closed, and (future) Web interface issue will be
+  raised when detected.  
+
+** SyntacticRules might need additional mappings
+- Issue #53. See the ticket for the discussion summary.
+
+** ITD subgroup report URL is not on the official site. 
+- Issue #84. See the ticket for the discussion summary.
+
+** Initialize() should be in the constructor?
+- Issue #92. See the ticket for the discussion summary.
+
+** Separation of training and process of EDA 
+- Issue #93. See the ticket for the discussion summary
+
+** Adding "parent" link to BasicNode 
+- Issue #94. See the ticket for the discussion summary
+
+** What if we need "Probability of Entailment", instead of "Confidence of decision"? 
+- Issue #98. See the ticket for the discussion summary 
+
+
+* Deferred Issues after WP3 discussion 
+** Providing more common "training" and "model" (#108) 
+
+** Supporting additional use-cases (like "text-expansion"). (#104) 
+
+** "Intelligent configuration" (configuration with metadata) (#65)
+
+Full list of deferred issues can be found in; 
+http://www.cl.uni-heidelberg.de/trac/excitement/report/15
+

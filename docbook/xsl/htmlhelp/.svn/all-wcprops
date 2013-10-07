@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/htmlhelp
+END
+profile-htmlhelp-common.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/htmlhelp/profile-htmlhelp-common.xsl
+END
+ChangeLog
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/htmlhelp/ChangeLog
+END
+htmlhelp-common.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/htmlhelp/htmlhelp-common.xsl
+END
+profile-htmlhelp.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/htmlhelp/profile-htmlhelp.xsl
+END
+htmlhelp.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/excitement/!svn/ver/1/specification/docbook/xsl/htmlhelp/htmlhelp.xsl
+END
