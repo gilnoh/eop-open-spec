@@ -10,14 +10,14 @@ href="file://./stylesheets/oasis-specification-html-offline.xsl"?>
 <!--the document properties-->
 <!ENTITY name "Excitement_Open_Platform_Specification">
 <!ENTITY pversion "1.1">
-<!ENTITY version "1.1.3">
+<!ENTITY version "1.1.4">
 <!ENTITY stage "draft">
-<!ENTITY standard "Specification V1.1.3">
+<!ENTITY standard "Specification V1.1.4">
 <!ENTITY this-loc "http://hltfbk.github.io/Excitement-Open-Platform/specification"> 
 <!ENTITY this-loc "http://hltfbk.github.io/Excitement-Open-Platform/specification/spec-&version;"> 
 <!ENTITY previous-loc "http://hltfbk.github.io/Excitement-Open-Platform/specification/spec-&version;"> 
 <!ENTITY latest-loc "http://hltfbk.github.io/Excitement-Open-Platform/specification/spec-&version;"> 
-<!ENTITY pubdate "06 December 2012">
+<!ENTITY pubdate "14 October 2013">
 ]>
 <article status="&standard;">
 
@@ -3534,10 +3534,11 @@ confidence is available.
 </listitem>
 <listitem>
 <para><code>private final double confidence</code>: The confidence
-score assigned to the rule, in the interval [0,1]. It is assumed that
-higher values mean higher confidence. If no meaningful confidence
-score is provided by the resource, this value will hold the
-value of DEFAULT_CONFIDENCE.
+score assigned to the rule, in the interval [0,1]. Consider this value
+as a probability of entailment from LHS to RHS. Naturally, higher
+value means more confident on the entailment of LHS to RHS. If no
+meaningful confidence score is provided by the resource, this will
+hold the value of DEFAULT_CONFIDENCE.  
 </para>
 </listitem>
 </itemizedlist>
@@ -3663,11 +3664,18 @@ also matches the <code>relation</code> field of
 </para>
 </listitem>
 --> 
-
+<listitem>
+<para><code>void close()</code>: this method enables the
+implementation to gracefully close underlying system resources (files, 
+database connections, etc). Users of syntactic and lexical resources
+are expected to call close() when the resource is no longer needed.   
+</para>
+</listitem>
 </itemizedlist>
 
-<para> The implementation must return an empty list (not
-<code>null</code>) if no applicable rules are found. </para> 
+<para> The implementation of <code>getRules</code> methods must return
+an empty list (not <code>null</code>) if no applicable rules are
+found. </para>  
 
 <para>Note that all lexical rules returned by this interface
 represent entailments (LHS->RHS entailments). In this sense, the
@@ -4229,19 +4237,19 @@ tree represented on the basis of <code>BasicNode</code> objects.
 <para><code>BidirectionalMap&lt;BasicNode,BasicNode&gt; mapNodes</code>: a bidirectional mapping between two parse tree nodes of type <code>BasicNode</code>. 
 </para>
 </listitem>
-<listitem>
-<para><code>TERuleRelation relation</code>: This variable holds an
-enum value of <code>TERuleRelation</code> (<xref
-linkend="sec-4.5.1.2"/>). It holds one of <code>Entailment</code> or
-<code>NonEntailment</code>. 
-</para>
+<!-- TODO? : add isExtraction ? --> 
+<!-- no relation type in syntactic rule --> 
+<!-- <para><code>TERuleRelation relation</code>: This variable holds an -->
+<!-- enum value of <code>TERuleRelation</code> (<xref -->
+<!-- linkend="sec-4.5.1.2"/>). It holds one of <code>Entailment</code> or -->
+<!-- <code>NonEntailment</code>.  -->
+<!-- </para> -->
 <!-- <para><code>DecisionLabel relation</code>: This variable holds an enum -->
 <!-- value of <code>DecisionLabel</code>(<xref linkend="sec-4.2.1.6"/>). It -->
 <!-- is expected that only the top enum values of the enum hierarchy -->
 <!-- (<code>Entailment</code> and <code>NonEntailment</code>) are used in -->
 <!-- this variable. -->
 <!-- </para> -->
-</listitem>
 </itemizedlist>
 <para>
 For each variable, a corresponding access method should be provided
@@ -4450,9 +4458,16 @@ matches such that LHS matches the text tree and RHS matches the
 hypothesis tree. 
 </para>
 </listitem>
+<listitem>
+<para><code>void close()</code>: this method enables the
+implementation to gracefully close underlying system resources (files, 
+database connections, etc). Users of syntactic and lexical resources
+are expected to call close() when the resource is no longer needed.   
+</para>
+</listitem>
 </itemizedlist> 
 
-<para> The overloaded method is provided for efficiency. Since it
+<para> The overloaded second method is provided for efficiency. Since it
 might be too expensive to find and apply all possible matches, the
 overloaded method only returns the rules that also match the
 hypothesis. This way, the user of the knowledge base can applies rules
@@ -5510,7 +5525,7 @@ We modify the DTD as follows:
           id CDATA #REQUIRED
           entailment (ENTAILMENT|NONENTAILMENT|CONTRADICTION|
                           PARAPHRASE|UNKNOWN) #REQUIRED
-          task (IR|IE|QA|SUM) #REQUIRED &gt;
+          task (IR|IE|QA|SUM) #IMPLIED &gt;
 &lt;!ELEMENT t (#PCDATA)&gt;
 &lt;!ELEMENT h (#PCDATA)&gt;
 </programlisting> 
@@ -5527,11 +5542,12 @@ place. This is the same for <code>channel</code> value. The value
 records the input channel (source of the input like e-mail, transcribed
 phone call, etc), and it is an optional value. Also, the possible
 values of entailment relationship are extended to match those of <xref
-linkend="sec-4.2.1.6"/>.  
+linkend="sec-4.2.1.6"/>. 
 </para> 
+<!-- TODO Mention that task field is now optional? -->
 
 <para> 
-Support for the extended RTE-5 format is mandatory. EDA implementers
+Support for this xtended RTE-5 format is mandatory. EDA implementers
 must support processing of the format. Other RTE formats are
 optional. EDAs (and their LAPs) may support them. 
 </para> 
@@ -5818,9 +5834,12 @@ after the project members have decided UIMA adoption as scheduled in
 <section id="sec-6.1">
 <title>Coding Standard </title>
 <para>This section describes the coding standard for the EXCITEMENT
-platform. The coding conventions are adopted from the coding guideline
-of the BIU NLP lab.
+platform. You can also find the latest coding standard from the
+project Wiki: <ulink 
+url="https://github.com/hltfbk/Excitement-Open-Platform/wiki/Coding-Guidelines">
+EOP Wiki: Coding Guidelines </ulink> 
 </para>
+
 <section id="sec-6.1.1">
 <title>Documentation </title>
 <itemizedlist>
@@ -11525,7 +11544,7 @@ EdgeInfo.java, Info.java</code>, and other codes in
           id CDATA #REQUIRED
           entailment (ENTAILMENT|NONENTAILMENT|CONTRADICTION|
                           PARAPHRASE|UNKNOWN) #REQUIRED
-          task (IR|IE|QA|SUM) #REQUIRED &gt;
+          task (IR|IE|QA|SUM) #IMPLIED &gt;
 &lt;!ELEMENT t (#PCDATA)&gt;
 &lt;!ELEMENT h (#PCDATA)&gt;
 </programlisting> 
