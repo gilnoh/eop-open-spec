@@ -1,4 +1,21 @@
 =====
+Spec v1.1.3 to v1.1.4 
+=====
+
+* Newly written subsection 
+None: main purpose of this release is to provide the latest Web
+version of the specification for further discussion. 
+
+* Added descriptions / clarifications 
+- updated coding standard to reflect latest changes, added link to
+  project Wiki coding standard page. 
+- RTE train/test file option, task become #IMPLIED (optional) 
+- "confidence" clarified in Lexical rule, as probability. 
+- method close() added to both LexicalResource interface and
+  SyntacticResource. 
+- SyntacticRule updated to reflect current upstream code. 
+
+=====
 Spec v1.1.2 to v1.1.3 
 =====
 
