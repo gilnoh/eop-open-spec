@@ -11,8 +11,8 @@ SPEC_FO=./stylesheets/oasis-specification-fo-a4.xsl
 %.fo: %.xml
 	xsltproc ${SPEC_FO} $< > $@
 
-all: spec-1.1.X.html spec-1.1.X.pdf 
+all: spec-2.0.html spec-2.0.pdf 
 clean:
-	rm spec-1.1.X.pdf
-	rm spec-1.1.X.html
+	rm spec-2.0.pdf
+	rm spec-2.0.html
 
