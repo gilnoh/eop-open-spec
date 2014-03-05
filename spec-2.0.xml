@@ -4943,13 +4943,327 @@ keep the names in component implementations.
 
 </section> <!-- end of 4.7 -->  
 
-<!--
+<!-- start of context sensitive lexical resource --> 
+<section id="context_sensitive_lexical_resource">
+<title>Context Sensitive Lexical Resource</title>
 <section>
-<title>Summary</title> 
-<para>(Add - how the requirements are resolved by the
-definition of this section)</para>
+<title>Basic requirements</title>
+<para>The lexical resource interface (<code>LexicalResource</code>) is imported from 
+BIUTEE to EOP, and it is well-tested by both BIUTEE and other EOP
+EDAs. It is expanded to include "resource-specific" relations
+(LexicalResourceWithOwnRelation) if a resource can support, and
+currently the interfaces are quite stable. 
+</para>
+
+<para>
+However, the interfaces are not providing any means of passing the
+context from EDA to the resource. Thus, the existing interfaces are
+not adequate to represent "context-sensitive" lexical resource. So we
+need to define one extension that permits context-passing, and all
+related matters. 
+</para>
+
+<para>
+Let's briefly outline current assumptions and requirements before
+outlining the actual interface.  
+</para>
+<itemizedlist>
+<listitem>
+<para>We use the same return type: no change on the result of the queries
+  (list of LexicalRule).    
+</para>
+</listitem>
+<listitem>
+<para>We make this interface as an "extension" interface. A resource
+  still needs to provide basic LexicalResource interface. The new
+  interface adds an additional set of methods that can behave
+  "context-sensitive" mode. 
+</para>
+</listitem>
+</itemizedlist>
+<para>
+The followings are requirements, rather than assumptions. 
+</para>
+<itemizedlist>
+<listitem>
+<para>Form of context should not be limited: it can be anything. Thus,
+  passing the T-H pair itself and all its annotations would be
+  ideal.  
+</para>
+</listitem>
+<listitem>
+<para>Capability to pass "candidates" are highly desirable: context
+  sensitive resource is not a static resource, and requires dynamic
+  calculation. Thus, "limitation" of rule calculation target is very
+  desirable for its efficiency. This can be done by passing a set of
+  candidates that limits RHS or LHS. (e.g. limit RHS or LHS with this
+  set of terms)  
+</para>
+</listitem>
+<listitem>
+<para>"position-only" query is also quite desirable. (I want to get
+  a set of rules, if any, between term<subscript>a</subscript> in location<subscript>a</subscript> and
+  location<subscript>b</subscript>. I don't care about what is the current term in
+  location<subscript>b</subscript>. )  
+</para>
+</listitem>
+</itemizedlist>
 </section>
--->
+
+<section>
+<title>Interface outline</title>
+<para>The following interface outlines an interface that satisfies
+all of the above assumptions and requirements. 
+</para>
+<section>
+<title><code>Interface LexicalResourceWithContext extends LexicalResource</code></title>
+<para>
+The interface adds three methods to the usual <code>getRules</code>
+family. Each added method (<code>getRulesLeft</code>, <code>getRulesRight</code> and
+<code>getRules</code>) overrides those methods in the basic interface, with added
+arguments that passes the context of the term in interest. Among the
+three added methods, <code>getRules</code> is the most general (and powerful)
+one that can pass two contexts (both of Text and Hypothesis), while
+<code>getRulesForLeft</code> and <code>getRulesForRight</code> are dealing with one side.  
+</para>
+<section>
+<title>method <code>getRules</code> family added by <code>LexicalResourceWithContext</code></title>
+<para>List&lt;LexicalRule&lt;? extends I&gt;&gt; getRules(String leftLemma,
+PartOfSpeech leftPos, String rightLemma, PartOfSpeech rightPos, JCas
+context, int lemmaLBegin, int lemmaRBegin,
+List&lt;Tuple&lt;String,PartOfSpeech&gt;&gt; candidates) throws
+LexicalResourceException;
+</para>
+
+<para>
+Let's see the expected usage of the method with an example. The T-H
+pair is given as the followings.
+</para>
+
+<para>
+<programlisting>___01234567890123456789012345678901  -- CAS SOFA position
+T: John walked his dog in the park.
+H: John took hit pet for a walk.
+</programlisting>
+</para>
+
+<para>
+Let's assume that a caller of the resource is interested in "dog" -
+"pet" part of the T-H pair. The following examples all assumes this
+case, with the above T-H pair.
+</para>
+
+<para>
+Example #1:
+<code>getRules("dog", noun, "pet", noun, aJCas, 16, 14, null);</code>
+</para>
+<itemizedlist>
+<listitem>
+<para>this call specifically asks the resource to check relationship
+  between (dog, N) -&gt; (pet, N); in the context of the annotated T-H
+  pair (JCas aJCas); position 16 of Text -&gt; position 14 of
+  Hypothesis.
+</para>
+</listitem>
+<listitem>
+<para>(Note that candidate list is null, which basically means consider
+  all candidates --- however, since lemma of both sides is given, list
+  of candidates are not meaningful in this case. The resource will
+  only consider dog -&gt; pet, within the context).
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Example #2:
+<code>getRules("dog", noun, null, null, aJCas, 16, 14, candidates);</code>
+where <code>candidates</code> are: <code>[ ("pet", noun), ("animal", noun),... (lemma_n, pos_n) ]</code>
+</para>
+<itemizedlist>
+<listitem>
+<para>This call asks the resource to check relation "dog" -&gt; candidates
+  (which holds pet, animal, etc); in the context of annotated T-H pair
+  aJCas; position 16 of T -&gt; position 14 of H.
+</para>
+</listitem>
+<listitem>
+<para>Note that, candidate is non-null; which dictates that the resource
+  will consider only those candidates as possible "filler" of right
+  lemma/pos (which are null).
+</para>
+</listitem>
+<listitem>
+<para>If the candidates variable is "null"; the resource will try to look
+  for all rules "dog -&gt; (any word)": this might be a complex
+  operation and the caller should expect slower process, compared to
+  the candidate given call case.  
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Example #3:
+<code>getRules(null, noun, null, noun, aJCas, 16, 14, candidates);</code>
+where <code>candidates</code> are: <code>[ ("pet", noun), ("animal", noun),... (lemma_n, pos_n) ]</code>
+</para>
+<itemizedlist>
+<listitem>
+<para>This call asks the resource to check possible rules that can be
+  used on the context of position 16 of text -&gt; position 14 of
+  hypothesis, as nouns.  
+</para>
+</listitem>
+<listitem>
+<para>Note that both lemma are null, but the candidates are
+  given. Thus, it will use all of the candidates, as possible filler
+  for those null lemmas.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Example #4:
+<code>getRules(null, null, null, null, aJCas, 16, 14, candidates);</code>
+where <code>candidates</code> are: <code>[ ("pet", noun), ("animal", noun), ... (lemma_n, pos_n) ]</code>
+</para>
+<itemizedlist>
+<listitem>
+<para>An extreme call case, where only the context is given (as the
+  TH-pair and position) with a set of candidates.
+</para>
+</listitem>
+<listitem>
+<para>The resource will try to find rules that can fill (left -&gt; right),
+  where left location and right location is known.
+</para>
+</listitem>
+<listitem>
+<para>The candidates are given in this case -- thus the resource will
+  only regard those candidates as the possible 'fillers' for the
+  positions.
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section>
+<title><code>getRulesLeft</code> family added by <code>LexicalResourceWithContext</code></title>
+<itemizedlist>
+<listitem>
+<para><code>List&lt;LexicalRule&lt;? extends I&gt;&gt; getRulesForLeft(String lemma,PartOfSpeech pos, JCas context, int lemmaLBegin,List&lt;Tuple&lt;String,PartOfSpeech&gt;&gt; candidates) throws LexicalResourceException;</code>
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Let's see some more examples for this case. Note that the methods
+does <emphasis role="bold">not</emphasis> care about Hypothesis side, and it only sees Text
+side. Thus, the meaning of a call is "what are the lexical rules that
+replace the term in its own context?".  
+</para>
+
+<para>
+<programlisting>___01234567890123456789012345678901  -- CAS SOFA position
+T: John walked his dog in the park.
+H: [ don't care ]
+</programlisting>
+</para>
+
+<para>
+Example #1. <code>getRulesForLeft("dog", noun, aJCas, 16, null)</code>
+</para>
+<itemizedlist>
+<listitem>
+<para>get me all rules that you know (note that null candidates), which
+  can be ("dog/Noun" -&gt; term), in the given context of Text.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Example #2. <code>getRulesForLeft("dog", noun, aJCas, 16, candidates)</code>
+where candidates are: <code>[ ("pet", noun), ("animal", noun), ... (lemma_n, pos_n) ]</code>
+</para>
+<itemizedlist>
+<listitem>
+<para>get me rules where the possible candidates are given as
+  <code>candidates</code>, on the term dog, as appears with the context given in
+  aJCas Text part pos 16.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Example #3. <code>getRulesForLeft(null, null, aJCas, 16, candidates)</code>
+where candidates are: <code>[ ("pet", noun), ("animal", noun), ... (lemma_n, pos_n) ]</code>
+</para>
+<itemizedlist>
+<listitem>
+<para>get me rules where the possible candidates are given as
+  <code>candidates</code>, that can be used in the aJCas pos 16. Note that this
+  call does not specify lemma of left!
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section>
+<title><code>getRulesRight</code> family added by <code>LexicalResourceWithContext</code></title>
+<itemizedlist>
+<listitem>
+<para><code>List&lt;LexicalRule&lt;? extends I&gt;&gt; getRulesForRight(String lemma,PartOfSpeech pos, JCas context, int lemmaRBegin,List&lt;Tuple&lt;String,PartOfSpeech&gt;&gt; candidates) throws LexicalResourceException;</code>
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Let's see some more examples for this case. Note that the methods
+does <emphasis role="bold">not</emphasis> care about Text side, and it only sees the Hypothesis
+side. Thus, the meaning of a call is "what are the lexical rules that
+can applied to the term in its own context?".  
+</para>
+
+<para>
+<programlisting>___01234567890123456789012345678901  -- CAS SOFA position.
+T: [ don't care ]
+H: John took hit pet for a walk.
+</programlisting>
+</para>
+
+<para>
+Example #1. <code>getRulesForRight("pet", noun, aJCas, 14, null)</code>
+</para>
+<itemizedlist>
+<listitem>
+<para>get me all rules that you know (note that null candidates), which
+  can be valid as (term -&gt; "pet/Noun"), in the given context of the
+  Hypothesis.  
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Example #2. <code>getRulesForRight("pet", noun, aJCas, 14, candidates)</code>
+where candidates is: <code>[ ("dog", noun), ("cat", noun), ... (lemma_n, pos_n) ]</code>
+</para>
+<itemizedlist>
+<listitem>
+<para>get me rules where the possible candidates are given as
+  <code>candidates</code>, on the target term "pet" as appears with the context
+  given in aJCas Hypothesis pos 14.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Example #3. <code>getRulesForRight(null, null, aJCas, 14, candidates)</code>
+where candidates is: <code>[ ("dog", noun), ("cat", noun), ... (lemma_n, pos_n) ]</code>
+</para>
+<itemizedlist>
+<listitem>
+<para>get me rules where the possible candidates are given as
+  <code>candidates</code>, that can be used in the aJCas Hypothesis pos 16. Note
+  that this call does not specify lemma of left!
+</para>
+</listitem>
+</itemizedlist>
+</section>
+</section>
+</section>
+</section>
+
+<!-- end of context sensitive lexical resource --> 
 
 </section> <!-- end of section 4 --> 
 
