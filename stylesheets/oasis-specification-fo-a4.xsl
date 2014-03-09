@@ -746,7 +746,7 @@
         <xsl:value-of select="/*/articleinfo/pubdate"/>
       </fo:block>
       <fo:block>
-        Page <fo:page-number/> of 107
+        Page <fo:page-number/> of 119
 	<!--Gil: for now, I donno how to set this value, thus simply... 
         <fo:page-number-citation-last ref-id="entire_publication"/> -->
       </fo:block>

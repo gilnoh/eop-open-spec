@@ -8,7 +8,7 @@ href="file://./stylesheets/oasis-specification-html-offline.xsl"?>
 "./docbook/docbookx.dtd"
 [
 <!--the document properties-->
-<!ENTITY name "Excitement Open Platform Specification">
+<!ENTITY name "Excitement Open Platform Specification (DRAFT)">
 <!ENTITY pversion "2.0">
 <!ENTITY version "2.0.0">
 <!ENTITY stage "draft">
@@ -17,7 +17,7 @@ href="file://./stylesheets/oasis-specification-html-offline.xsl"?>
 <!ENTITY this-loc "http://hltfbk.github.io/Excitement-Open-Platform/specification/spec-&version;"> 
 <!ENTITY previous-loc "http://hltfbk.github.io/Excitement-Open-Platform/specification/spec-&version;"> 
 <!ENTITY latest-loc "http://hltfbk.github.io/Excitement-Open-Platform/specification/spec-&version;"> 
-<!ENTITY pubdate "31 March 2014">
+<!ENTITY pubdate "10 March 2014">
 ]>
 
 <article status="&stage;">
@@ -132,18 +132,18 @@ in June 2012. This first version defined backbones of EXCITEMENT open
 platform with major component types, data structures and conventions
 for the development of the open platform. The specification has been
 updated a few time with the actual development progress. Version 1.1
-was released in August 2012. It was a major update that provided
-missing parts to version 1.0, and became the blueprint for the
-platform development over 2012 and 2013. <ulink
-url="http://hltfbk.github.io/Excitement-Open-Platform/"> EXCITEMENT
-open platform (EOP)</ulink> has been successfully developed and
-deployed with the specified content. Latest version of EOP (version
-1.1.1, at the time of writing) is a matured, well-documented,
-multi-lingual, open-source Textual Inference platform. Specification
-1.1 was updated to reflect issues found in the development
-process. The last version of specification 1.1 is <ulink
+was released in August 2012. This version  was a major update that
+provided missing parts to version 1.0, and became the blueprint for
+the platform development over 2012 and 2013. 
+The last version of specification 1.1 is <ulink
 url="http://hltfbk.github.io/Excitement-Open-Platform/specification/spec-1.1.4.pdf">
-specification version 1.1.4</ulink>, published in October 2013.   
+specification version 1.1.4</ulink>, published in October 2013. 
+<ulink url="http://hltfbk.github.io/Excitement-Open-Platform/">
+EXCITEMENT open platform (EOP)</ulink> has been successfully
+developed following the specification. EXCITEMENT open platform
+(version 1.1.1, at the time of writing) is a matured,
+well-documented, multi-lingual, open-source Textual Inference
+platform.
 </para> 
 </formalpara>
 
@@ -176,17 +176,24 @@ resources, and support for new Entailment Decision Algorithms
 (EDAs). The following list outlines major new component types and
 updated sections that are new to specification 2.0. 
 <itemizedlist>
-<listitem><para>Context sensitive Lexical resource (TODO add xref)</para></listitem>
-<listitem><para>Phrase level knowledge resource (TODO add xref)</para></listitem>
-<listitem><para>Training interface for components (TODO add xref)</para></listitem>  
-<listitem><para>Annotation and alignment components (TODO add xref)</para></listitem>  
+<listitem><para>Context sensitive Lexical resource (<xref
+linkend="context_sensitive_lexical_resource"/>)</para></listitem> 
+<listitem><para>Phrase level knowledge resource (TODO add XREF once added) </para></listitem>
+<listitem><para>Annotation component (<xref linkend="annotator_component"/>)</para></listitem>   
+<listitem><para>Alignment component and alignment CAS types (<xref
+linkend="alignment_component"/>)</para></listitem>     
+<listitem><para>Training interface for components (<xref
+linkend="interface_trainable"/>)</para></listitem>    
 <listitem><para>Sentence Similarity Decision
-Algorithm (TODO add xref)</para></listitem>  
-<listitem><para>Alignment Type for annotating alignment between T and
-H in CAS (TODO add xref)</para></listitem>  
+Algorithm (<xref linkend="SDA" />)</para></listitem>  
 <!-- <listitem><para>Updates on Syntactic resource
 component</para></listitem>   --> 
 </itemizedlist>
+Please note that other sections, such as LAP interface sections,
+configuration sections and details of syntactic resources, also got
+minor updates. For the full list of changes since specification
+version 1.0 (Deliverable 3.1a), please see the Appendix <xref
+linkend="list_of_changes"/>. 
 </para> 
 </formalpara>
 
@@ -331,7 +338,7 @@ the transduction layer. This layer is part of the work towards Goal
 B. It translates between the queries posed by the industrial partners'
 use cases and entailment queries that can be answered by the open
 platform developed for Goal A. The transduction layer is described in
-a separate document, to be released as Deliverable 3.2b. 
+a separate document (Deliverable 3.2b). 
 </para>
 </section>
 </section> 
@@ -593,48 +600,52 @@ with all its issues resolved. } </para> -->
        </variablelist>
        </section>
     </section>
-<section>
-<title>Licensing considerations
-</title>
-<para>The goal of this document is to define interfaces that allow the
-use of a wide range of externally developed linguistic analysis
-modules and inference components within the EXCITEMENT platform. An
-issue that arises in practice is that externally developed software
-will come with its own licenses, which may be problematic. (NB. This
-question also concerns libraries that might be used in EXCITEMENT, for
-example regarding data input/output or configuration.)
-</para>
-<para>This issue requires more future discussion among partners. Our
-momentary analysis of the situation is that we need to distinguish
-between the two major application scenarios of EXCITEMENT, namely as
-the open-source platform and in industry partners' systems.
-<orderedlist>
-<listitem><para>Open-Source Platform. Within the open-source platform,
-externally developed modules will generally be admissible as long as
-their license permits academic use. We will however only be able to
-package modules as part of the platform that permit redistribution;
-other modules will have to be installed separately by the end
-users. </para>
-<para>
-Which license the open-source platform itself will be released under
-is still undecided.
-</para>
-</listitem>
-<listitem><para>Industrial Systems. We will need to adopt a more
-restricted policy for the use of EXCITEMENT in the industrial
-systems. Only software that permits commercial use is
-admissible. Major licenses that meet this requirement are the Apache
-license; the BSD license; CC licenses that are not part of the NC
-family; the MIT license. The GPL is presumably unsuitable since it
-requires distribution of the complete system under the GPL. Under the
-assumption that the resulting systems will be used only in-house at
-the industrial partners, at least for the time being, the question of
-whether redistribution is permissible does not arise here.
-</para>
-</listitem>
-</orderedlist>
-</para>
-</section>
+
+
+<!-- Gil: LICENSE issue is no longer needed in the spec. --> 
+
+<!-- <section> -->
+<!-- <title>Licensing considerations -->
+<!-- </title> -->
+<!-- <para>The goal of this document is to define interfaces that allow the -->
+<!-- use of a wide range of externally developed linguistic analysis -->
+<!-- modules and inference components within the EXCITEMENT platform. An -->
+<!-- issue that arises in practice is that externally developed software -->
+<!-- will come with its own licenses, which may be problematic. (NB. This -->
+<!-- question also concerns libraries that might be used in EXCITEMENT, for -->
+<!-- example regarding data input/output or configuration.) -->
+<!-- </para> -->
+<!-- <para>This issue requires more future discussion among partners. Our -->
+<!-- momentary analysis of the situation is that we need to distinguish -->
+<!-- between the two major application scenarios of EXCITEMENT, namely as -->
+<!-- the open-source platform and in industry partners' systems. -->
+<!-- <orderedlist> -->
+<!-- <listitem><para>Open-Source Platform. Within the open-source platform, -->
+<!-- externally developed modules will generally be admissible as long as -->
+<!-- their license permits academic use. We will however only be able to -->
+<!-- package modules as part of the platform that permit redistribution; -->
+<!-- other modules will have to be installed separately by the end -->
+<!-- users. </para> -->
+<!-- <para> -->
+<!-- Which license the open-source platform itself will be released under -->
+<!-- is still undecided. -->
+<!-- </para> -->
+<!-- </listitem> -->
+<!-- <listitem><para>Industrial Systems. We will need to adopt a more -->
+<!-- restricted policy for the use of EXCITEMENT in the industrial -->
+<!-- systems. Only software that permits commercial use is -->
+<!-- admissible. Major licenses that meet this requirement are the Apache -->
+<!-- license; the BSD license; CC licenses that are not part of the NC -->
+<!-- family; the MIT license. The GPL is presumably unsuitable since it -->
+<!-- requires distribution of the complete system under the GPL. Under the -->
+<!-- assumption that the resulting systems will be used only in-house at -->
+<!-- the industrial partners, at least for the time being, the question of -->
+<!-- whether redistribution is permissible does not arise here. -->
+<!-- </para> -->
+<!-- </listitem> -->
+<!-- </orderedlist> -->
+<!-- </para> -->
+<!-- </section> -->
 
 </section> <!-- end of section ELEMENTS of EXCITEMENT platform -->
 
@@ -5264,6 +5275,651 @@ where candidates is: <code>[ ("dog", noun), ("cat", noun), ... (lemma_n, pos_n) 
 </section>
 
 <!-- end of context sensitive lexical resource --> 
+
+<!-- start of phrase level resource --> 
+<section id="phrase_level_resource">
+<title>Phrase level knowledge resource</title>
+<para>
+TO BE ADDED
+</para> 
+</section>
+<!-- end of phrase level resource --> 
+
+
+<!-- start of annotator & alignment --> 
+<section id="annotator_component">
+<title>Annotator component</title>
+<section>
+<title>Description</title>
+<para>As described in the section 3 (LAP and type system), EOP relies on CAS
+as the main data structure to keep various levels of annotations. From
+LAP level, they are generic language processing results like POS,
+lemma, syntactic dependencies, NER, SLR and etc. As described in the
+section, CAS type system can express (with new extensions and
+additions of types), and add almost any data related to the input
+pair.  
+</para>
+
+<para>
+The expressive power of CAS and its annotations are not limited to
+generic processing like parsing, or SLR. For example, consider a new
+annotation type that annotates partial entailment relation, or
+partial contradiction relations. Imagine that the component is able
+to determine partial contradiction with some confidence. (say, the
+time duration of the adverb phrase of the text cannot match another
+adverb phrase in hypothesis, etc). This type of information should
+be determined and passed to the total (full) entailment decision
+algorithm. If we want to express such data, in a common way, which
+would be the best within the platform? As annotations within CAS, is a
+natural data type for such a component. The component analyzes the
+given CAS, determines what the component is supposed to do, and add
+what is determined by the component in terms of specific annotations
+(e.g. in the above example, phrase level contradiction). 
+</para>
+
+<para>
+We define this kind of component as a separate type of component, and
+call it the Annotator component. An annotator component gets one CAS,
+analyzes the given CAS and add additional information in forms
+annotation. The added annotation gives extra information for EDAs,
+which would help EDA's decision on entailment. 
+</para>
+
+<para>
+What is the difference between a <code>AnnotatorComponent</code> and a LAP
+component? It seems that both adds annotations in CAS. The following
+list outlines the major differences. In general, we expect it would
+be easy to figure out where a new annotation adding module to be
+added. 
+</para>
+<itemizedlist>
+<listitem>
+<para>LAP components annotator provides generic annotations, such as POS,
+  NER and syntactic structures. Annotator component provides more
+  textual entailment specific annotations. 
+</para>
+</listitem>
+<listitem>
+<para>LAP annotates each view separately, each as a text. Annotator
+  component annotate the given CAS as a T-H pair (or
+  pairs). Annotator component treats the CAS as entailment pair data,
+  not just two set of textual input. 
+</para>
+</listitem>
+<listitem>
+<para>LAP components belong to LAP. They cannot access CORE components
+  like lexical or syntactic knowledge resources. Annotator component
+  is part of CORE, and actively utilizes other CORE components. 
+</para>
+</listitem>
+</itemizedlist>
+<para>
+We also define sub-types of Annotator component, to identify annotator
+components by their types and roles. In the version 2.0 of the
+specification, only the <code>AlignmentComponent</code> is the subtype of
+<code>AnnotatorComponent</code>. 
+</para>
+</section>
+
+<section>
+<title>Interface <code>AnnotatorComponent</code></title>
+<para>The interface defines only one method. 
+</para>
+<itemizedlist>
+<listitem>
+<para><code>public void annotate(JCas aJCas)</code>: the method gets one JCas. Once
+  the annotate process is done, the given JCas enriched by the added
+  layer of annotations. If the annotator component was not able to
+  add annotations (for example, needed LAP annotation like lemma was
+  missing, or some failure of activating resources, etc), the
+  component must raise a proper exception. If the call is successfully 
+  returned, it always means the process was successful --- even though
+  there were no added annotations (e.g. contradiction annotator, but
+  there was no contradiction). 
+</para>
+</listitem>
+</itemizedlist>
+</section>
+</section>
+
+<section id="alignment_component">
+<title>Alignment component</title>
+<section>
+<title>Interface <code>AlignmentComponent</code></title>
+<para>Alignment component is a sub-type of annotator component. The
+component interface does not add any new method. This (empty)
+interface is defined as an independent interface mainly to serve the
+purpose of identifying alignment components among alignment
+components. 
+</para>
+
+<para>
+All components that implement <code>AlignmentComponent</code> <emphasis role="bold">must</emphasis> annotate
+according to the specific CAS types that are designed for alignment
+annotations within EOP, which are described in the following
+section.  
+</para>
+</section>
+
+<section id="alignment_cas_type">
+<title>CAS types for Alignment annotation</title>
+<para>Spec 1.1 defined <code>AlignedText</code> CAS type. The type had been designed to
+express surface level of alignments (token, and phrase levels). The
+simple type was good for those, but it is not appropriate for aligning
+more complex annotations, such as nodes, trees, graphs, or any future
+data that will be added for EOP CASes.  
+In this section, we define a new, more general annotation types. The
+new types are designed for alignment representation on any
+annotations. 
+</para>
+
+<para>
+The design goal for the new types are permitting maximum flexibility, 
+while maintaining simple types that is generic enough. We define two
+types for this. 
+</para>
+<itemizedlist>
+<listitem>
+<para><code>excitement.alignment.Target</code>
+</para>
+<itemizedlist>
+<listitem>
+<para>CAS annotation type that can point one or more annotations
+    (tokens, parse nodes, NER nodes, or any annotations) 
+</para>
+</listitem>
+<listitem>
+<para>A list that groups annotations in one View.
+</para>
+</listitem>
+<listitem>
+<para>The purpose is to allow dynamic alignment of material, including
+    structures made by multiple annotations. 
+</para>
+</listitem>
+</itemizedlist>
+</listitem>
+<listitem>
+<para><code>excitement.alignment.Link</code>
+</para>
+<itemizedlist>
+<listitem>
+<para>CAS type that links two <code>Target</code>.   
+</para>
+</listitem>
+<listitem>
+<para>Multi-view type: a <code>Link</code> connects one target in T (<code>TextView</code>),
+    the other target in H (<code>HypothesisView</code>). 
+</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</itemizedlist>
+<para>
+We make no assumptions regarding what annotations are aligned by
+<code>Link</code> and <code>Target</code> annotations. One <code>Target</code> can be linked by an
+arbitrary number of <code>Link</code>, also a <code>Target</code> can group an arbitrary
+number of <code>Annotations</code>. Note that <code>uima.tcas.Annotation</code> is the
+super type of almost all CAS annotation data. Since a <code>Target</code> can
+group <code>Annotation</code>, it can group any type of annotations in CAS. 
+</para>
+
+<para>
+You can find the formal definitions of the two CAS types in the
+following sections. Their definitions are pretty straightforward, but
+please take a look on "notes on usage" of each type for its begin-end
+behavior, before using the types. 
+</para>
+<section>
+<title><code>alignment.Target</code></title>
+<itemizedlist>
+<listitem>
+<para>Name: <code>eu.excitementproject.type.alignment.Target</code>
+</para>
+</listitem>
+<listitem>
+<para>is-a: <code>uima.tcas.Annotation</code>
+</para>
+<itemizedlist>
+<listitem>
+<para>inherits feature <code>begin</code> and <code>end</code>
+</para>
+</listitem>
+</itemizedlist>
+</listitem>
+<listitem>
+<para>Features
+</para>
+<itemizedlist>
+<listitem>
+<para><code>targetAnnotations</code> (<code>FSArray</code> [ <code>Annotations</code> ]): This is a
+    <code>FSArray</code> that can hold one or more annotations. A target should
+    mark one or more annotations 
+</para>
+</listitem>
+</itemizedlist>
+</listitem>
+<listitem>
+<para>Note on usage
+</para>
+<itemizedlist>
+<listitem>
+<para><code>begin</code> holds the minimum <code>begin</code> value among annotations in
+    <code>targetAnnotations</code>. 
+</para>
+</listitem>
+<listitem>
+<para>Likewise, <code>end</code> should point the maximum end among annotations. 
+</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</itemizedlist>
+</section>
+
+<section>
+<title><code>alignment.Link</code></title>
+<itemizedlist>
+<listitem>
+<para>Name: <code>eu.excitementproject.type.alignment.Link</code>
+</para>
+</listitem>
+<listitem>
+<para>is-a: <code>uima.tcas.Annotation</code> 
+</para>
+<itemizedlist>
+<listitem>
+<para>inherits feature <code>begin</code> and <code>end</code> 
+</para>
+</listitem>
+</itemizedlist>
+</listitem>
+<listitem>
+<para>Features
+</para>
+<itemizedlist>
+<listitem>
+<para><code>textSideTarget</code> (<code>aligment.Target</code>): this feature points one
+    <code>Target</code> in <code>TextView</code>. Mandatory, and should not be null. 
+</para>
+</listitem>
+<listitem>
+<para><code>hypotehsisSideTaget</code> (<code>alignment.Target</code>): this feature points
+    one <code>Target</code> in <code>HypothesisView</code>. Mandatory, and should not be
+    null.  
+</para>
+</listitem>
+<listitem>
+<para><code>type</code> (<code>String</code>): a string that describe the type of the
+    link. (e.g. "Lexical Alignment", "Dependency Sub-tree", etc). Note
+    that we do not attempt to group types of different
+    alignments. The <code>type</code> is merely a string, that identifies what
+    kind of module added the link. 
+</para>
+</listitem>
+<listitem>
+<para><code>linkStrenth</code> (<code>Double</code>): a double value that ranges between [-1,
+    1]. A plus-valued link means that this is a positive
+    alignment. In TE context, this positive value means positive
+    local entailment. The higher the value is, the more confident the
+    annotator component is. Minus value means that this is a negative 
+    alignment. That is, the annotator is confident that this cannot
+    be a local entailment (essentially means local contradiction). 
+</para>
+</listitem>
+</itemizedlist>
+</listitem>
+<listitem>
+<para>Note on usage
+</para>
+<itemizedlist>
+<listitem>
+<para>Indexing of the <code>Link</code> within CAS: All annotations must be
+    indexed to the CAS or CAS Views to be accessible. By convention
+    we define that a <code>Link</code> instance should be indexed on
+    <code>HypothesisView</code>. So iteration over the <code>HypothesisView</code> will get
+    all alignment <code>Link</code> instances within the CAS. 
+</para>
+</listitem>
+<listitem>
+<para><code>begin</code> and <code>end</code>: Also as a convention, both span values should
+    hold the same value to that of <code>hypothesisSideTarget</code>. Again,
+    this is also for generalizing accessing of <code>Link</code> instances. 
+</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</itemizedlist>
+</section>
+
+<section>
+<title>Note on the deprecated old type</title>
+<para>Please note that old <code>AlignedText</code> type is deprecated, and no longer
+used. Even for surface level of alignments, <code>AlignmentComponent</code> must
+only use <code>alignment.Link</code> and <code>alignment.Target</code>.  
+</para>
+</section>
+</section>
+</section>
+
+<!-- end of alignment component --> 
+
+<!-- start of interface trainable --> 
+<section id="interface_trainable">
+<title>Interface <code>Trainable</code></title>
+<section>
+<title>Description of the interface</title>
+<para>A RTE system generally requires the process of training: actual
+content of training can vary, but a working RTE engine requires
+various parameters, or knowledge to make a good entailment
+decision. Such parameters are normally acquired via a training data,
+and then they are stored in a model. 
+</para>
+
+<para>
+In the earlier versions of the specification (pre-2.0), the training
+capability of RTE engine was only defined on the top level, on
+EDA. EDA has <code>startTraining</code>, and <code>initialize</code>. The two methods
+works with configurable values (in the form of common
+configurations), and starts training with the given configuration and
+generate a new model(<code>startTraining</code>), or load a pre-existing model
+(<code>initialize</code>). 
+This choice of top-level-only training is reasonable for systems where
+there is only one entry point for training. For example, TIE, EDITs
+and BIUTEE worked well with this setup. An instance of the EDAs only
+uses one model per EDA (per EDA configuration). 
+</para>
+
+<para>
+However, not all training behavior of RTE systems can be mapped with
+this way. An example is alignment-based approach. Alignment is an
+essential step for alignment-based RTE systems. This monolingual
+alignment process can be expressed as a component (as explained in
+annotation component) that can be used by multiple EDAs, or as of
+aligner module itself. Which means that trained parameters of the
+component is independent to a specific EDA, and it should be saved as
+its own model. 
+</para>
+<para>
+Our approach on "trainable component" is again minimal, similar to
+our definition of the training method on EDA. We define a common
+starting point for training. Each component that can produce a model
+and training capability should implement the <code>Trainable</code>
+interface. This interface provides a common entry point for
+initiating the training process. Each training process (and their
+required data) can vary greatly. Those varying options will be
+provided in the configuration. 
+</para>
+
+<para>
+Note that we do not define common model storage methods (e.g. what to
+save, where to save, what kind of format the model file has,
+etc). This is provided by each component, and each component that
+provides this interface must document the required configurable values
+in its JavaDoc documents. Thus, this interface only provides common
+starting point for training. Although this is a minimal contract, the
+interface enables several common behavior. 
+</para>
+<itemizedlist>
+<listitem>
+<para>All trainable components are recognizable with this interface. 
+</para>
+</listitem>
+<listitem>
+<para>Each trainable component shares the same starting point. Thus, when
+  an EDA wants to train multiple <code>Trainable</code>
+  component instances, it can do so with one valid common
+  configuration and iterating over trainable components by calling the
+  method provided by  <code>Trainable</code> interface.  
+</para>
+</listitem>
+<listitem>
+<para>The interface forces all <code>Trainable</code> to support Common-config. 
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section>
+<title>Methods of the interface</title>
+<para>The interface only provides one method. 
+</para>
+
+<para>
+<code>void startTraining(CommonConfig configuration)</code>
+</para>
+
+<para>
+Calling this method makes the component to start the training process,
+as defined in the configuration values. Once the training process is 
+finish, the method will return without any return value, but the
+training result will be written in a designated position in the
+configuration. 
+</para>
+
+<para>
+Note that once <code>startTraining()</code> is finished, the component instance
+does not need to comeback to "prediction (or work)" mode. For
+example, let's assume we have an alignment component. Normal
+(prediction) mode call would be <code>annotate()</code> method as defined in the
+alignment component. However, Once <code>startTraining()</code> method is called
+and model is saved via the method, the instance do not need to be
+able to process further <code>annotate()</code> call. Component writers can
+consider <code>startTraining()</code> as a one-way mode change command for the
+component to training mode. This assumption is added to make actual
+implementation of trainable components simpler. 
+</para>
+
+<para>
+Also note that we do not provide <code>initialize()</code> method in this
+interface, in contrast to <code>EDABasic</code> interface. 
+</para>
+</section>
+</section>
+
+<!-- end of interface trainable --> 
+
+
+
+<!-- start of SDA --> 
+
+<section id="SDA">
+<title>Semantic Similarity Decision Algorithm</title>
+<section>
+<title>Description of the component</title>
+<section>
+<title>Semantic Textual Similarity task</title>
+<para>Semantic Textual Similarity (STS) is a task of determining the
+semantic similarity between a pair of textual data. The goal is
+described as "given two textual input, find out the degree of semantic
+equivalence between the two inputs." (<ulink url="http://ixa2.si.ehu.es/sts/">http://ixa2.si.ehu.es/sts/</ulink>) 
+The task is related to both Textual Entailment and Paraphrase, but it
+is different in a way. Unlike Textual Entailment, STS task is not
+directional. For example, in TE, "a car" entails "a vehicle", but not
+the other way around. In STS, it is a symmetric relation. Also, the
+result of STS is graded similarity, not categorical decision (e.g. the
+pair [riding a vehicle, riding a car] is more similar than [riding a
+wave, riding a car]). 
+</para>
+
+<para>
+STS task has been evolving with SemEval tasks, since 2012. (xref
+SemEval-2012 Task 6). The task sets provide concrete training/test
+set similar to RTE dataset. In the task data, the similarity degree
+is represented in a (continuous) scale of real number between 0.0 
+to 5. Degree of 0 means there is no relation at all, while degree of
+5.0 represents semantic equivalence. 
+</para>
+
+<para>
+STS is a separate task where its goal is different to TE
+task. However, there are many potential of possible common
+contributions. For example, the assumption of EDITS EDA is actually
+based on similarity (e.g. if T and H are not related, they can't be
+entailment), and many RTE systems and STS systems can actually share 
+various common processing components (e.g. distance components)
+and/or static components (e.g. knowledge resources). 
+We believe that supporting STS systems within EXCITEMENT open
+platform has potential of future collaboration and sharing of useful
+components and modules that might benefit both communities. 
+</para>
+</section>
+
+<section>
+<title>Supporting STS system in EXCITEMENT platform</title>
+<para>In the specification version 2.0, we start supporting STS systems by
+first adopting the top level interfaces. 
+By top level, it means the same level as EDA level. The following
+figure shows the conceptual drawing of where the newly defined
+top-level STS module lies. 
+</para>
+
+<figure id="sda_flow">
+<title>Top level data flow of SDA</title> 
+<mediaobject>
+<imageobject>
+<imagedata fileref="./figures/SDAflow.jpg" scalefit="1" width="90%" align="center"/>
+</imageobject>
+</mediaobject>
+</figure>
+
+<para>
+The figure is very similar to the top level figures for
+<code>EDABasic</code> interface. Text-pair is given to LAP, and the
+LAP generates CAS output which holds the annotated pair. However,
+instead of EDA, here comes the newly defined SDA (Similarity Decision
+Algorithm). The SDA represents the STS task in the top-level abstract,
+where the input is annotated pair data (in CAS), and the output is new
+Similarity Score result data type that represents STS similarity
+output (<code>SemanticSimilarityDecision</code>). 
+</para>
+
+<para>
+One interesting aspect here is that we reuse the same CAS and same
+data types. Note that some names in CAS assumes TE-style inputs (for
+example, view names are designated as "Text", and "Hypothesis"), but
+LAP-output is generally (almost always) neutral to the task. STS
+systems simply can consider "Text" of input pair as "s1 (sentence
+1)", and "Hypothesis" part as "s2 (sentence 2)". Note that most of
+the LAP annotations are not aware of two views (text and hypothesis),
+and task-neutral.  
+</para>
+
+<para>
+Thus, CAS for EDA and SDA are almost identical. The only difference on
+CAS level is the gold annotation that is required for training
+part. EDA uses <code>gold</code> value annotated with <code>EntailmentPair</code> annotation
+type. However, SDA does not utilize this gold value. Instead, there is
+a new CAS type defined for SDA. <code>SemanticSimilarityPair</code>, which is an
+extension of <code>EntailmentPair</code>, and holds <code>goldSimilarityValue</code> that
+scales between 0 to 5. Note that We choose to extend
+<code>SemanticSimilarityPair</code> from <code>EntailmentPair</code>, so on the processing
+side (once the model is learned), SDA can share CASes that are
+prepared for EDAs without any modifications. 
+</para>
+</section>
+</section>
+
+<section id="SDABasic">
+<title>Interface SDABasic</title>
+<para><code>public interface SDABasic&lt;T extends SemanticSimilarityDecision&gt;</code>
+</para>
+
+<para>
+This interface supports basic capabilities for STS task. It defines 4
+methods, similar to <code>EDABasic</code> interface. 
+</para>
+<itemizedlist>
+<listitem>
+<para><code>public void initialize (CommonConfig config)</code>: This method will be
+  called by the top level programs as the signal for initializing the
+  SDA. All initialization of an SDA like setting up sub-components and
+  connecting resources must be done in this method. An SDA
+  implementation must check the configuration and raise exceptions if
+  the  provided configuration is not compatible. Initialize is also
+  responsible for passing the configuration to common
+  sub-components.  
+</para>
+</listitem>
+<listitem>
+<para><code>public T process (JCas aJCas)</code>: This is the main access point for
+  the top level. The top level application can only use this method
+  when the SDA is properly configured and initialized. Each time this
+  method is called, the SDA should check the input for its
+  compatibility. Within the EXCITEMENT platform, SDA implementations
+  are decoupled with linguistic analysis pipelines, and you cannot
+  blindly assume that CAS input is valid. SDA implementation must
+  check  the existence of proper annotation layers corresponding to
+  the configuration of the SDA. The similarity decision is returned as
+  an object that extends <code>SemanticSimilarityDecision</code>  interface which
+  essentially holds the similarity as a float value. 
+</para>
+</listitem>
+<listitem>
+<para><code>public void shutdown()</code>: This method provides a graceful exit for
+  the SDA. This method will be called by top-level as a signal to
+  disengage all resources. All resources allocated by the SDA should
+  be released when this method is called.
+</para>
+</listitem>
+<listitem>
+<para><code>public void startTraining(CommonConfig c)</code>: startTraining interface
+  is the common interface for EDA training. The interface signals the
+  start of the training with the given configuration c. 
+</para>
+</listitem>
+</itemizedlist>
+<section id="semantic_similarity_decision">
+<title>Type <code>SemanticSimilarityDecision</code></title>
+<para>This interface represents the return value for <code>SDA</code> <code>process()</code>
+results. It only holds the basic information, and SDA implementers are
+expected to extend it to hold additional information for their SDA. It
+defines two methods. 
+</para>
+<itemizedlist>
+<listitem>
+<para><code>public double getSimilarityValue()</code>: This method returns the
+  similarity value decided by the SDA.  
+</para>
+</listitem>
+<listitem>
+<para><code>public String getPairId()</code>: This method returns Pair id as
+  described in the CAS. 
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section id="limit_of_SDA_in_2.0">
+<title>Limitation of STS task support in the specification version 2.0</title>
+<para>Please note that for the moment (ver. 2.0), we only have top-level
+STS support only. The specification 2.0 is yet to resolve the
+component reusing issue. It is not so simple to actually reuse
+EXCITEMENT core components in SDA. This is because of the fact that
+many component types implicitly assumes T -&gt; H directional
+processing. For example, Lexical resources and Syntactic resources are
+asymmetric from its very definition. (LHS entails RHS.) It is also
+similar for Distance components: although this is not as explicit as
+knowledge resources, but they also assumes directed distance from T to
+H (e.g. edit distance from T to H with asymmetric calculation).   
+</para>
+
+<para>
+How do we want to define and harmonize components to be reused in
+both EDA and SDA? For example, do we want to additionally define
+symmetric versions of lexical resources? This is an open issue
+without easy answers. In the specification version 2.0, we do not try 
+to resolve this issue yet. For the moment, we only provide top level
+for STS with SDA interface.  
+</para>
+</section>
+</section>
+</section>
+
+<!-- end of SDA --> 
+
+
+
 
 </section> <!-- end of section 4 --> 
 
@@ -11955,7 +12611,11 @@ EdgeInfo.java, Info.java</code>, and other codes in
 &lt;!ELEMENT t (#PCDATA)&gt;
 &lt;!ELEMENT h (#PCDATA)&gt;
 </programlisting> 
+</appendix> 
 
+<appendix id="list_of_changes">
+<title> List of changes per version </title>
+<para>TO BE ADDED (copy and reformat CHANGES file from GitHub repository)</para>
 </appendix>
 
 <!-- <appendix> -->
