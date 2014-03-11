@@ -191,9 +191,9 @@ component</para></listitem>   -->
 </itemizedlist>
 Please note that other sections, such as LAP interface sections,
 configuration sections and details of syntactic resources, also got
-minor updates. For the full list of changes since specification
-version 1.0 (Deliverable 3.1a), please see the Appendix <xref
-linkend="list_of_changes"/>. 
+minor updates. For the full list of changes since the specification
+version 1.0 (Deliverable 3.1a), please see <xref
+linkend="list_of_changes"/>.  
 </para> 
 </formalpara>
 
@@ -1028,27 +1028,29 @@ type system to meet particular information needs. This is discussed in
 </para>
 </listitem>
 <listitem>
-<para>The implementer <emphasis role="bold">must</emphasis> provide
+<para>The implementer <emphasis role="bold">must</emphasis> provide 
 linguistic pipelines that can process T-H pairs and generate
-proper CAS structures that can be consumed by the EDA. This is 
-specified in <xref linkend="AAEs"/>. 
+proper CAS structures, by implementing a specific interface. The
+interface is defined in <xref linkend="lap_interfaces"/>.  
 </para>
 </listitem>
-<listitem>
-<para>It is <emphasis role="bold">recommended</emphasis> that the
-implementer provides the ability to pre-process a set of documents and
-produce a set of properly serialized CAS structures that can be
-consumed by the EDA. This is specified in <xref linkend="FileOut"/>.
-</para>
-</listitem>
-<listitem>
-<para>The implementer <emphasis role="bold">can</emphasis> provide
-individual linguistic analysis components as individual AEs. This is
-specified in <xref linkend="AEs"/>. In some cases, providing
-individual engine might not be desirable. Treatment of such cases are
-described in subsection <xref linkend="alternativeAAE"/>.
-</para>
-</listitem>
+<!-- <listitem> -->
+<!-- <para>It is <emphasis role="bold">recommended</emphasis> that the -->
+<!-- implementer provides the ability to pre-process a set of documents and -->
+<!-- produce a set of properly serialized CAS structures that can be -->
+<!-- consumed by the EDA. This capability can be easily provided by -->
+<!-- implement This is specified in <xref linkend="FileOut"/>. -->
+<!-- </para> -->
+<!-- </listitem> -->
+
+<!-- <listitem> -->
+<!-- <para>The implementer <emphasis role="bold">can</emphasis> provide -->
+<!-- individual linguistic analysis components as individual AEs. This is -->
+<!-- specified in <xref linkend="AEs"/>. In some cases, providing -->
+<!-- individual engine might not be desirable. Treatment of such cases are -->
+<!-- described in subsection <xref linkend="alternativeAAE"/>. -->
+<!-- </para> -->
+<!-- </listitem> -->
 </itemizedlist>
 <para>
 This specification provides no further information on UIMA. Please
@@ -2112,14 +2114,14 @@ myNN will map onto NN).
 </section>
 </section>
 
-<section>
-<title>Providing analysis components for LAP </title> 
+<!-- <section> -->
+<!-- <title>Providing analysis components for LAP </title>  -->
 
-<section id="AEs">
-<title>Providing individual analysis engines (AEs)</title>
+<!-- <section id="AEs"> -->
+<!-- <title>Providing individual analysis engines (AEs)</title> -->
 
-<!-- [Gil: we have a subsection talks about UIMA adoption (3.2.3) and don't
-need this paragraph.] --> 
+<!-- [Gil: we have a subsection talks about UIMA adoption (3.2.3) and don't -->
+<!-- need this paragraph.] -->
 <!-- <para> This section deals with policy issues related to UIMA AEs. -->
 <!-- Providing each linguistic analysis component as an individual AE -->
 <!-- grants us maximum flexibility. However, this also comes with -->
@@ -2129,12 +2131,12 @@ need this paragraph.] -->
 <!-- reflects the current status (as of June 2012).  -->
 <!-- </para>  -->
 
-<para>It would be ideal if each linguistic analysis module (like POS
-taggers, parsers or coreference resolvers) were provided as a generic
-individual UIMA analysis engine (AE). With individual AEs, user code
-would be able to call these modules as UIMA components, as described
-in <xref linkend="sec-3.3.2"/>.
-</para>
+<!-- <para>It would be ideal if each linguistic analysis module (like POS -->
+<!-- taggers, parsers or coreference resolvers) were provided as a generic -->
+<!-- individual UIMA analysis engine (AE). With individual AEs, user code -->
+<!-- would be able to call these modules as UIMA components, as described -->
+<!-- in <xref linkend="sec-3.3.2"/>. -->
+<!-- </para> -->
 
 <!-- <para>It is recommended that each linguistic analysis module (like POS -->
 <!-- taggers, parsers or coreference resolvers) should be provided as a -->
@@ -2143,82 +2145,82 @@ in <xref linkend="sec-3.3.2"/>.
 <!-- <xref linkend="sec-3.3.2"/>. -->
 <!-- </para> -->
 
-<para> 
-By generic, we mean they are supposed to process normal text and not
-T/H pairs. The modules are not supposed to process or even be aware of
-annotations related to entailment problems. This ensures their
-reusability. The necessary specific processing for entailment data
-(H/T markup) should be implemented within a complete pipeline, cf. the
-following subsection.
-</para> 
+<!-- <para>  -->
+<!-- By generic, we mean they are supposed to process normal text and not -->
+<!-- T/H pairs. The modules are not supposed to process or even be aware of -->
+<!-- annotations related to entailment problems. This ensures their -->
+<!-- reusability. The necessary specific processing for entailment data -->
+<!-- (H/T markup) should be implemented within a complete pipeline, cf. the -->
+<!-- following subsection. -->
+<!-- </para>  -->
 
-<para>
-As described in <xref linkend="sec-3.3.3"/>, all analysis engines must
-annotate the given data with the common type system. In the rare case
-where the provided common type system is not sufficient, the
-implementer must not modify any of the existing types and should only
-expand existing types with an own type that inherits existing types.
-</para>
+<!-- <para> -->
+<!-- As described in <xref linkend="sec-3.3.3"/>, all analysis engines must -->
+<!-- annotate the given data with the common type system. In the rare case -->
+<!-- where the provided common type system is not sufficient, the -->
+<!-- implementer must not modify any of the existing types and should only -->
+<!-- expand existing types with an own type that inherits existing types. -->
+<!-- </para> -->
 
-<para>
-It is recommended that the implementer should reuse existing AEs as
-much as possible. For example, DKPro already provides many of the well
-known NLP tools including major parsers and taggers for various
-languages. ClearTK or OpenNLP also ships various NLP tools as UIMA
-components. ClearTK or OpenNLP uses different type systems, thus one
-needs to add additional glue code to map the types into adopted DKPro
-types. However, such mappings are generally trivial and should not
-pose large problems.
-</para>
+<!-- <para> -->
+<!-- It is recommended that the implementer should reuse existing AEs as -->
+<!-- much as possible. For example, DKPro already provides many of the well -->
+<!-- known NLP tools including major parsers and taggers for various -->
+<!-- languages. ClearTK or OpenNLP also ships various NLP tools as UIMA -->
+<!-- components. ClearTK or OpenNLP uses different type systems, thus one -->
+<!-- needs to add additional glue code to map the types into adopted DKPro -->
+<!-- types. However, such mappings are generally trivial and should not -->
+<!-- pose large problems. -->
+<!-- </para> -->
 
-<para>
-Note that there is more than one flavor in providing UIMA
-components. This specification only defines types and components in
-terms of the bare UIMA framework. Each component is supposed to have
-its component description, and should be runnable by the UIMA
-framework.  However, the implementers are free to utilize additional
-tools. For example, DKPro and ClearTK both uses UIMAFit as tool layer,
-which provides the functionalities of the UIMA framework with
-additional tool layers. The implementer may utilize such tools, as
-long as the end results are compatible with what are defined by this
-specification.
-</para>
+<!-- <para> -->
+<!-- Note that there is more than one flavor in providing UIMA -->
+<!-- components. This specification only defines types and components in -->
+<!-- terms of the bare UIMA framework. Each component is supposed to have -->
+<!-- its component description, and should be runnable by the UIMA -->
+<!-- framework.  However, the implementers are free to utilize additional -->
+<!-- tools. For example, DKPro and ClearTK both uses UIMAFit as tool layer, -->
+<!-- which provides the functionalities of the UIMA framework with -->
+<!-- additional tool layers. The implementer may utilize such tools, as -->
+<!-- long as the end results are compatible with what are defined by this -->
+<!-- specification. -->
+<!-- </para> -->
 
-<para>
-In some cases, one may choose NOT to provide individual analysis
-components as UIMA components. See <xref linkend="alternativeAAE"/>
-for such a case. 
-</para>
-</section>
+<!-- <para> -->
+<!-- In some cases, one may choose NOT to provide individual analysis -->
+<!-- components as UIMA components. See <xref linkend="alternativeAAE"/> -->
+<!-- for such a case.  -->
+<!-- </para> -->
+<!-- </section> -->
 
-<section id="AAEs">
-<title>Providing an analysis pipeline</title>
-<para>Individual analysis engines (AEs) are generic. They process a
-single input (single CAS) and add some annotation layers back to CAS.
-As mentioned above, however, EDAs require more the sum of single AE
-annotations, namely T-H views, and T-H pair annotations.  Thus, it is
-desirable to provide complete "pipelines" that is properly annotated
-with types needed for textual entailment. 
-</para>
+<!-- <section id="AAEs"> -->
+<!-- <title>Providing an analysis pipeline</title> -->
+<!-- <para>Individual analysis engines (AEs) are generic. They process a -->
+<!-- single input (single CAS) and add some annotation layers back to CAS. -->
+<!-- As mentioned above, however, EDAs require more the sum of single AE -->
+<!-- annotations, namely T-H views, and T-H pair annotations.  Thus, it is -->
+<!-- desirable to provide complete "pipelines" that is properly annotated -->
+<!-- with types needed for textual entailment.  -->
+<!-- </para> -->
 
-<para>
-A pipeline for EXCITEMENT EDA must process the followings: 
-</para>
-<itemizedlist> 
-<listitem>
-<para> The end result of the pipeline should generate the CAS as an
-entailment test case, as described in <xref linkend="TETypes"/>.  </para>
-</listitem>
-<listitem>
-<para> It should be able to process input of formatted text that follows the
-EXCITEMENT test data format, defined in <xref linkend="sec-5.2"/>.  </para>
-</listitem>
-<listitem>
-<para> All linguistic analysis annotations should follow the adopted
-type system (of <xref linkend="genericTypes"/>), or some extension of
-the adopted types. </para> 
-</listitem>
-</itemizedlist> 
+<!-- <para> -->
+<!-- A pipeline for EXCITEMENT EDA must process the followings:  -->
+<!-- </para> -->
+<!-- <itemizedlist>  -->
+<!-- <listitem> -->
+<!-- <para> The end result of the pipeline should generate the CAS as an -->
+<!-- entailment test case, as described in <xref linkend="TETypes"/>.  </para> -->
+<!-- </listitem> -->
+<!-- <listitem> -->
+<!-- <para> It should be able to process input of formatted text that follows the -->
+<!-- EXCITEMENT test data format, defined in <xref linkend="sec-5.2"/>.  </para> -->
+<!-- </listitem> -->
+<!-- <listitem> -->
+<!-- <para> All linguistic analysis annotations should follow the adopted -->
+<!-- type system (of <xref linkend="genericTypes"/>), or some extension of -->
+<!-- the adopted types. </para>  -->
+<!-- </listitem> -->
+<!-- </itemizedlist>  -->
 
 <!-- <itemizedlist> -->
 <!-- <listitem> -->
@@ -2237,96 +2239,351 @@ the adopted types. </para>
 <!-- </listitem> -->
 <!-- </itemizedlist> -->
 
-<para>
-EDA implementers <emphasis role="bold">must</emphasis> provide at
-least a single pipeline that produces suitable input for their EDA, or
-declare that an already existing pipeline as the suitable pipeline. If
-the EDA supports additional input mode like multiple texts/hypotheses,
-the implementer should provide a corresponding pipeline that produce
-multiple text/hypothesis. 
-</para>
-</section>
+<!-- <para> -->
+<!-- EDA implementers <emphasis role="bold">must</emphasis> provide at -->
+<!-- least a single pipeline that produces suitable input for their EDA, or -->
+<!-- declare that an already existing pipeline as the suitable pipeline. If -->
+<!-- the EDA supports additional input mode like multiple texts/hypotheses, -->
+<!-- the implementer should provide a corresponding pipeline that produce -->
+<!-- multiple text/hypothesis.  -->
+<!-- </para> -->
+<!-- </section> -->
 
-<section id="FileOut">
-<title>Providing serialized outputs for a set of documents</title>
-<para>Pre-processing of a set of document (collection) is often needed for
-NLP applications. In textual entailment context, a pre-processed set
-of training/testing data can be beneficial for various cases. 
+<!-- <section id="FileOut"> -->
+<!-- <title>Providing serialized outputs for a set of documents</title> -->
+<!-- <para>Pre-processing of a set of document (collection) is often needed for -->
+<!-- NLP applications. In textual entailment context, a pre-processed set -->
+<!-- of training/testing data can be beneficial for various cases.  -->
+<!-- </para> -->
+
+<!-- <para> -->
+<!-- EDA implementers <emphasis role="bold">should</emphasis> provide the -->
+<!-- collection pre-processing capability.  -->
+<!-- </para> -->
+<!-- <itemizedlist> -->
+<!-- <listitem> -->
+<!-- <para>It must process a collection of documents stored in a path.  -->
+<!-- </para> -->
+<!-- </listitem> -->
+<!-- <listitem> -->
+<!-- <para> The end result for each file process must generate the CAS as -->
+<!-- an entailment test case, as described in <xref -->
+<!-- linkend="TETypes"/>. The CAS should be stored in a path as the XMI   -->
+<!-- serialization.</para> -->
+<!-- </listitem> -->
+<!-- <listitem> -->
+<!-- <para>Each stored CAS data must be identical to the output of the -->
+<!-- corresponding pipeline.  -->
+<!-- </para> -->
+<!-- </listitem> -->
+<!-- <listitem> -->
+<!-- <para> It should be able to process input of formatted text that follows the -->
+<!-- EXCITEMENT test data format, defined in <xref linkend="sec-5.2"/>.  </para> -->
+<!-- </listitem> -->
+<!-- <listitem> -->
+<!-- <para> All linguistic analysis annotations should follow the adopted -->
+<!-- type system (of <xref linkend="genericTypes"/>), or some extension of -->
+<!-- the adopted types. </para>  -->
+<!-- </listitem> -->
+<!-- </itemizedlist> -->
+
+<!-- <para>Note that XMI (XML Media Interchange format) serialization is -->
+<!-- the standard serialization supported by UIMA framework. It stores each -->
+<!-- CAS as an XML file, and the stored files can be easily deserialized by -->
+<!-- UIMA framework utilities. You can find additional information about CAS -->
+<!-- serialization in <xref linkend="UIMA_ref_ser"/> </para>     -->
+<!-- </section> -->
+
+<!-- <section id="alternativeAAE"> -->
+<!-- <title>An alternative: Independent pipelines with CAS output</title> -->
+
+<!-- <para>It is recommended that individual analysis components are -->
+<!-- supplied as UIMA analysis engine (AE). This will make sure those -->
+<!-- analysis modules can be used by top level users in various situations, -->
+<!-- as suited for the need of application programmers. -->
+<!-- </para> -->
+
+<!-- <para> -->
+<!-- However, there can be situations where EDAs depend on specialized -->
+<!-- analysis modules which form a pipeline that cannot easily be divided -->
+<!-- into individual UIMA analysis engines. For example, assume that there -->
+<!-- is a parser and a coreference resolution system that are designed to -->
+<!-- work together to produce a specific output for a given EDA. Then, it -->
+<!-- might not be desirable to break them into individual analysis -->
+<!-- engines. In such a case, one may choose to provide only the pipeline -->
+<!-- as a single analysis engine which translates the final output of the -->
+<!-- pipeline into the common representation format. -->
+<!-- </para> -->
+
+<!-- <para> -->
+<!-- Even in these cases, the developers should provide the pipeline as an -->
+<!-- UIMA component. This will ensure that the pipeline can be called in an  -->
+<!-- identical manner to normal pipelines. -->
+<!-- </para> -->
+<!-- </section> -->
+<!-- </section> --> 
+
+<!-- LAP interface section --> 
+<section id="lap_interfaces">
+<title>Linguistic Analysis Pipeline (LAP) interface</title> 
+
+<section id="LAP-goal">
+<title>The goals of the LAP interface</title>
+<para>
+LAP (Linguistic Analysis Pipelines) is an important part of the
+platform that provides all linguistic analysis capabilities for the
+EXCITEMENT platform and its users. It provides not only normal NLP
+annotation capabilities like tagging and parsing, but also the
+capability to generate well-formed CASes for EXCITEMENT entailment
+decision algorithms (EDAs).
 </para>
 
 <para>
-EDA implementers <emphasis role="bold">should</emphasis> provide the
-collection pre-processing capability. 
+The purpose of this set of LAP interfaces is twofold. First, it
+defines the common minimal capability that each pipeline should
+provide, in terms of interface definition. Each EDA implementer must provide a
+compatible pipeline for the EDA. For the developer who will provide a
+new pipeline, these interfaces can serve as an implementation
+guideline. 
+</para>
+
+<para>
+The second purpose of the interface is to make the underlying pipeline
+mechanism transparent for the end user.  As stated in the previous
+sections (<xref linkend="LAP-conformance"/>), the EXCITEMENT
+consortium already agreed on using UIMA CAS. However, we have not yet
+come to a decision about the adoption of UIMA runtime mechanism (like
+AE, AAE or CPE, etc). In the first iteration of the platform, it is
+expected that some of the pipelines are composed by a set of UIMA AEs,
+while other pipelines will only "translate" their pipeline output to
+the UIMA CAS. </para>
+
+<para>
+In this situation, it is important to define a coherent set of
+interfaces that is shared by all pipelines, regardless to the
+underlying mechanism. The users should be able to call all different
+pipelines with the same argument and signatures. This is more
+important for users who just want to use the platform only as
+"off-the-shelf TE engine". For example, knowledge of CAS or UIMA types
+should not exposed to such users. Those users should be able to use
+LAP pipelines for their EDA calls without knowing what CAS has within
+it.
+</para>
+
+<para>
+The following sections define the three set of methods that will be
+shared by all pipelines.  
+</para>
+</section> <!-- end of subsection LAP-goal --> 
+
+
+<section id="LAP-interface">
+<title>Interface <code>LAPAccess</code></title>
+<para>
+<code>interface LAPAccess extends Components</code> 
+</para>
+<para>
+This interface defines the minimal set of methods that a working
+LAP pipeline should provide for EXCITEMENT platform. It defines three 
+types of methods. One for generic annotation, one for single pair
+online-generation, and one for collection processing of single-pair
+input files. 
+</para>
+
+<!-- <para>
+Note that this interface extends <code>interface
+Components</code>. This enables an implementation of
+<code>LAPAccess</code> to receive configuration data in the same way
+to other core components (via <code>initialize()</code>).  
+</para>
+--> 
+
+<section>
+<title>method <code>generateSingleTHPairCAS</code> </title>
+<itemizedlist>
+<listitem>
+<para><code>public JCas generateSingleTHPairCAS(String text, String
+hypothesis) throws LAPException</code>   
 </para>
 <itemizedlist>
 <listitem>
-<para>It must process a collection of documents stored in a path. 
+
+<para>Arguments: <code>text</code> holds the text string of the single
+pair TE problem. <code>hypothesis</code> holds the hypothesis string of the
+problem.  
 </para>
 </listitem>
 <listitem>
-<para> The end result for each file process must generate the CAS as
-an entailment test case, as described in <xref
-linkend="TETypes"/>. The CAS should be stored in a path as the XMI  
-serialization.</para>
-</listitem>
-<listitem>
-<para>Each stored CAS data must be identical to the output of the
-corresponding pipeline. 
+<para>returns: a <code>JCas</code>, where the CAS is ready to be used as an input
+for an EDA.  
 </para>
 </listitem>
-<listitem>
-<para> It should be able to process input of formatted text that follows the
-EXCITEMENT test data format, defined in <xref linkend="sec-5.2"/>.  </para>
-</listitem>
-<listitem>
-<para> All linguistic analysis annotations should follow the adopted
-type system (of <xref linkend="genericTypes"/>), or some extension of
-the adopted types. </para> 
+</itemizedlist>
 </listitem>
 </itemizedlist>
 
-<para>Note that XMI (XML Media Interchange format) serialization is
-the standard serialization supported by UIMA framework. It stores each
-CAS as an XML file, and the stored files can be easily deserialized by
-UIMA framework utilities. You can find additional information about CAS
-serialization in <xref linkend="UIMA_ref_ser"/> </para>    
-</section>
-
-<section id="alternativeAAE">
-<title>An alternative: Independent pipelines with CAS output</title>
-
-<para>It is recommended that individual analysis components are
-supplied as UIMA analysis engine (AE). This will make sure those
-analysis modules can be used by top level users in various situations,
-as suited for the need of application programmers.
+<para>This method gets two strings as input and generates a CAS for an
+EDA. The resulting CAS must be a well-formed CAS that contains all
+types can are necessary for a complete description of the entailment
+problem (i.e. all types from the <code>EXCITEMENT.entailment</code> namespace),
+as defined in <xref linkend="TETypes"/>. 
 </para>
 
 <para>
-However, there can be situations where EDAs depend on specialized
-analysis modules which form a pipeline that cannot easily be divided
-into individual UIMA analysis engines. For example, assume that there
-is a parser and a coreference resolution system that are designed to
-work together to produce a specific output for a given EDA. Then, it
-might not be desirable to break them into individual analysis
-engines. In such a case, one may choose to provide only the pipeline
-as a single analysis engine which translates the final output of the
-pipeline into the common representation format.
-</para>
-
-<para>
-Even in these cases, the developers should provide the pipeline as an
-UIMA component. This will ensure that the pipeline can be called in an 
-identical manner to normal pipelines.
+The amount of linguistic annotation can differ among implementations
+(say, EnglishTokenizationOnly(t,h) only returns token with TE
+annotations, while GermanParsingAndNER(t,h) returns tagging, parsing,
+POS and NER, etc).
 </para>
 </section>
-</section>
 
-<!--
 <section>
-<title>Summary</title>
-<para>(Add - show how the requirements are met by UIMA)</para>
+<title>method <code>processRawInputFormat</code></title>
+<itemizedlist>
+<listitem>
+
+<para><code>public void processRawInputFormat(File inputFile, File outputDir) throws LAPException</code>
+</para>
+<itemizedlist>
+<listitem>
+
+<para>Arguments: <code>File inputFile</code> holds the raw input XML file. <code>File     outputDir</code> holds the output directory where the resulting CAS XMI
+should be stored.  
+</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</itemizedlist>
+
+<para>This method gets two <code>File</code> as arguments. First argument is a single
+input file that follows the raw input XML format (as defined in
+<xref linkend="sec-5.2"/>), and the second argument
+<code>outputDir</code> is the output directory. The method returns
+nothing. Analysis results are stored as serialized CAS files in the
+directory. (standard XMI serialization of UIMA CAS).   
+</para>
+
+<para>
+Again, the generated CASes should be well-formed and must contain all
+types can are necessary for a complete description of the entailment
+problem (i.e. all types from the <code>EXCITEMENT.entailment</code> namespace).
+</para>
 </section>
--->
+
+<section>
+<title>method <code>addAnnotationsToCAS</code> </title>
+<itemizedlist>
+<listitem>
+
+<para><code>public void addAnnotationOn(JCas aJCas) throws LAPException</code>  
+</para>
+<itemizedlist>
+<listitem>
+
+<para>Arguments: <code>aJCas</code> holds the CAS object that will be annotated by
+the analysis pipeline. 
+</para>
+</listitem>
+<listitem>
+<para>Returns: Nothing. The JCas argument is enriched by the
+linguistic analysis annotations provided by the pipeline. 
+</para>
+</listitem>
+</itemizedlist>
+</listitem>
+<listitem>
+<para><code>public void addAnnotationOn(JCas aJCas, String viewName) throws LAPException</code>
+</para>
+<itemizedlist>
+<listitem>
+
+<para>Arguments: <code>aJCas</code> holds the CAS object that will be annotated by
+the analysis pipeline. This overridden method is for multi-view
+CASes. <code>aJCas</code> holds two or more view, where one of them has the
+view name equal to <code>viewName</code>. 
+</para>
+</listitem>
+<listitem>
+<para>Returns: Nothing. The argument JCas is enriched: one of its view
+where its name is equal to <code>viewName</code> is enriched by the
+linguistic analysis annotations provided by the pipeline. 
+</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</itemizedlist>
+
+<para>The interface is a generic interface that can be called for adding
+linguistic annotations for any data.  <code>addAnnotattionOn</code> method does
+not produce CASes that are ready for EDAs. It only adds generic
+language analysis results to the provided CAS. This method provides
+users with the ability to analyze some text data that is not directly
+a TE pair.  
+</para>
+
+<para>
+The method's argument is not a string or text, but a JCas. The user
+must have some knowledge on CAS to use this interface. For example,
+they needs to know how to generate a new CAS and add text data to
+it, before calling this method. This design is intentional. The user
+needs to know about CAS data access methods beforehand, to open up and
+manually access the analysis results provided by a pipeline.
+Moreover, all entailment core interfaces that accept CAS as an
+argument accept only the EDA-compatible CASes. That is, a specific
+form and type of CASes that can be consumed by EDAs and components
+(CASes with <code>EXCITEMENT.entailment.*</code> types, and with <code>TextView</code> and
+<code>HypothesisViews</code>). 
+</para>
+
+<para>
+Thus, the <code>addAnnotationOn</code> interface (unlike
+<code>generateSingleTHPairCAS</code> or <code>processRawInputFormat</code>) produces
+"generic CASes", which can be non-EDA-compatible CASes. 
+The resulting CASes of <code>addAnnotationOn</code> are meant to be used mainly
+by the caller himself, when they require to perform linguistic
+analysis on additional data of some kind. For example, the
+Transduction layer needs to use this functionality to determine which
+sentence of a customer e-mail can be regarded as text or hypothesis,
+respectively.
+</para>
+
+<para>
+Note that <code>addAnnotationOn</code> exists in two versions: one that applies
+to the single view CAS and one that applies just a specific View
+within the CAS. The pipeline implementer must provide both of them; we
+recommend to implement <code>addAnnotationOn(JCas)</code> simply as a call of
+<code>addAnnotationOn(JCas,"_InitialView")</code> (single view CAS is a CAS with
+one view, that is implicitly named as "<subscript>InivitalView</subscript>"). 
+</para>
+
+<para>
+<code>addAnnotationOn</code> should not add any type that belongs to
+<code>EXCITEMENT.entailment.*</code> types (types related to text, hypothesis,
+pair and entailment metadata).
+</para>
+
+<para>
+An <code>LAPAccess</code> implementation must provide all three sets of methods
+defined in the interface.  
+</para>
+</section>
+</section> <!-- end of subsection LAP-interface --> 
+
+<!-- <section id="LAP-future"> -->
+<!-- <title>Room for improvements with UIMA adoption</title> -->
+<!-- <para>There is a room for improvement for the interface, if the consortium -->
+<!-- decides to adopt UIMA Analysis Engines (AEs) as the basis for LAP -->
+<!-- components. Such improvements (such as using UIMA AE, AAE, and runtime -->
+<!-- to share and standardize LAP components) will be considered fully, -->
+<!-- after the project members have decided UIMA adoption as scheduled in -->
+<!-- <xref linkend="LAP-conformance"/>.   -->
+<!-- </para> -->
+<!-- </section> --> 
+<!-- end of subsection LAP-future -->
+
+</section> 
+<!-- end of lap interface section -->  
+
 </section> <!-- end of Section 3-->
 
 <section id="sec-4">
@@ -2502,7 +2759,8 @@ and/or hypothesis cases.
 EDAs must support. It has four methods. <code>process</code> is main
 access method of textual entailment decision. It uses
 <code>JCas</code> as input type, and <code>TEDecision</code> as output
-type. The interface as Java code is listed in <xref linkend="c-1"/>.
+type. 
+<!-- The interface as Java code is listed in <xref linkend="c-1"/>. -->
 </para>
 <section id="sec-4.2.1.1">
 <title>method <code>initialize</code></title>
@@ -2702,10 +2960,12 @@ calculations, etc.
 <title>enum <code>DecisionLabel</code></title>
 <para>
 This enumeration value represents the entailment decision. It should
-be implemented as a hierarchical enumeration. One possible
-hierarchical enumeration with the method <code>is()</code> is listed
-in
-<xref linkend="c-1-DecisionLabel"/>
+be implemented as a hierarchical enumeration. 
+
+<!-- One possible -->
+<!-- hierarchical enumeration with the method <code>is()</code> is listed -->
+<!-- in <xref linkend="c-1-DecisionLabel"/> -->
+
 The current specification (V1.1) defines 6 labels:
 <code>Entailment</code>, <code>NonEntailment</code>,
 <code>Contradiction</code>, <code>Paraphrase</code>,
@@ -3025,9 +3285,9 @@ cases. It is a baseline implementation that can be used with any EDA.
 </para>
 
 <para>
-It is defined as an abstract Java object. The interface code is
-listed in <xref linkend="c-3"/> It is expected that the platform will
-share one implementation of mode helper for all EDAs. 
+It is defined as an abstract Java object. 
+<!-- The interface code is listed in <xref linkend="c-3"/>  -->
+It is expected that the platform will share one implementation of mode helper for all EDAs. 
 </para>
 <section id="sec-4.3.1">
 <title>Methods</title>
@@ -3375,8 +3635,9 @@ different).
 <para>The interface is a subinterface of
 <code>ScoringComponent</code>. The new methods it adds is
 <code>calculation()</code>, which gets a <code>JCas</code> and returns
-an object of <code>DistanceValue</code>. The interface definition in
-Java code can be found in <xref linkend="c-4"/>. 
+an object of <code>DistanceValue</code>. 
+<!-- The interface definition in -->
+<!-- Java code can be found in <xref linkend="c-4"/>.  -->
 </para>
 
 <section id="sec-4.4.1.2">
@@ -3431,8 +3692,9 @@ etc. They may be used as additional features by some EDAs). </para>
 <para>This type holds the distance calculation result. It has some
 member variables and public access functions for the variable. The
 type is used to exchange data between the component and the EDA. Its
-variables are set during initialization. The actual java code listing
-is included in <xref linkend="c-4"/>. 
+variables are set during initialization. 
+<!-- The actual java code listing -->
+<!-- is included in <xref linkend="c-4"/>.  -->
 </para>
 <section id="sec-4.4.2.1">
 <title>Variables and access methods </title>
@@ -3563,8 +3825,9 @@ value.
 
 <para>
 All lexical knowledge of EXCITEMENT resource will be delivered as an
-instance of this object. Java source code of the <code>class
-LexicalRule</code> is provided in <xref linkend="c-5"/>.
+instance of this object. 
+<!-- Java source code of the <code>class -->
+<!-- LexicalRule</code> is provided in <xref linkend="c-5"/>. -->
 </para>
 <section id="sec-4.5.1.1">
 <title>Variables and access methods. </title>
@@ -3695,9 +3958,10 @@ A lexical resource is a collection of lexical rules of a certain type
 (like WordNet, or VerbOcean) which can be queried. The interface
 provides three query methods. Queries are specified by lemma and POS
 pairs, and the results are returned as a list of
-<code>LexicalRule</code> objects. The Java source code of the
-interface is listed in the <xref
-linkend="c-5"/>. <code>LexicalResource</code> is a subinterface of
+<code>LexicalRule</code> objects. 
+<!-- The Java source code of the interface is listed in the <xref -->
+<!-- linkend="c-5"/>.   -->
+<code>LexicalResource</code> is a subinterface of
 <code>Component</code> and adds the following methods:
 </para>
 <itemizedlist>
@@ -4504,8 +4768,9 @@ The <code>BasicNode</code> is implemented with two generic
 parameters. One is the info type (that holds nodeinfo and edgeinfo),
 and the other is node type itself (children and antecedent). Generic
 parameters are omitted in the text paragraph for readability, but they
-are described in the appendix source code in <xref
-linkend="c-6-BasicNode"/>. 
+are described in the actual class code. 
+<!-- appendix source code in <xref -->
+<!-- linkend="c-6-BasicNode"/>.  -->
 <!-- As the first version of implementation, -->
 <!-- <code>BasicNode</code> and all related objects will be imported from -->
 <!-- BIUTEE to the EXCITEMENT project.  -->
@@ -6621,265 +6886,6 @@ shared among all EDAs and EDA implementers.
 </section> <!-- end of Section 5, common data format --> 
 
 
-<section>
-<title>Linguistic Analysis Pipeline</title> 
-
-<section id="LAP-goal">
-<title>The goals of the LAP interface</title>
-<para>
-LAP (Linguistic Analysis Pipelines) is an important part of the
-platform that provides all linguistic analysis capabilities for the
-EXCITEMENT platform and its users. It provides not only normal NLP
-annotation capabilities like tagging and parsing, but also the
-capability to generate well-formed CASes for EXCITEMENT entailment
-decision algorithms (EDAs).
-</para>
-
-<para>
-The purpose of this set of LAP interfaces is twofold. First, it
-defines the common minimal capability that each pipeline should
-provide, in terms of interface definition. Each EDA implementer must provide a
-compatible pipeline for the EDA. For the developer who will provide a
-new pipeline, these interfaces can serve as an implementation
-guideline. 
-</para>
-
-<para>
-The second purpose of the interface is to make the underlying pipeline
-mechanism transparent for the end user.  As stated in the previous
-sections (<xref linkend="LAP-conformance"/>), the EXCITEMENT
-consortium already agreed on using UIMA CAS. However, we have not yet
-come to a decision about the adoption of UIMA runtime mechanism (like
-AE, AAE or CPE, etc). In the first iteration of the platform, it is
-expected that some of the pipelines are composed by a set of UIMA AEs,
-while other pipelines will only "translate" their pipeline output to
-the UIMA CAS. </para>
-
-<para>
-In this situation, it is important to define a coherent set of
-interfaces that is shared by all pipelines, regardless to the
-underlying mechanism. The users should be able to call all different
-pipelines with the same argument and signatures. This is more
-important for users who just want to use the platform only as
-"off-the-shelf TE engine". For example, knowledge of CAS or UIMA types
-should not exposed to such users. Those users should be able to use
-LAP pipelines for their EDA calls without knowing what CAS has within
-it.
-</para>
-
-<para>
-The following sections define the three set of methods that will be
-shared by all pipelines.  
-</para>
-</section> <!-- end of subsection LAP-goal --> 
-
-
-<section id="LAP-interface">
-<title>Interface <code>LAPAccess</code></title>
-<para>
-<code>interface LAPAccess extends Components</code> 
-</para>
-<para>
-This interface defines the minimal set of methods that a working
-LAP pipeline should provide for EXCITEMENT platform. It defines three 
-types of methods. One for generic annotation, one for single pair
-online-generation, and one for collection processing of single-pair
-input files. 
-</para>
-
-<!-- <para>
-Note that this interface extends <code>interface
-Components</code>. This enables an implementation of
-<code>LAPAccess</code> to receive configuration data in the same way
-to other core components (via <code>initialize()</code>).  
-</para>
---> 
-
-<section>
-<title>method <code>generateSingleTHPairCAS</code> </title>
-<itemizedlist>
-<listitem>
-<para><code>public JCas generateSingleTHPairCAS(String text, String
-hypothesis) throws LAPException</code>   
-</para>
-<itemizedlist>
-<listitem>
-
-<para>Arguments: <code>text</code> holds the text string of the single
-pair TE problem. <code>hypothesis</code> holds the hypothesis string of the
-problem.  
-</para>
-</listitem>
-<listitem>
-<para>returns: a <code>JCas</code>, where the CAS is ready to be used as an input
-for an EDA.  
-</para>
-</listitem>
-</itemizedlist>
-</listitem>
-</itemizedlist>
-
-<para>This method gets two strings as input and generates a CAS for an
-EDA. The resulting CAS must be a well-formed CAS that contains all
-types can are necessary for a complete description of the entailment
-problem (i.e. all types from the <code>EXCITEMENT.entailment</code> namespace),
-as defined in <xref linkend="TETypes"/>. 
-</para>
-
-<para>
-The amount of linguistic annotation can differ among implementations
-(say, EnglishTokenizationOnly(t,h) only returns token with TE
-annotations, while GermanParsingAndNER(t,h) returns tagging, parsing,
-POS and NER, etc).
-</para>
-</section>
-
-<section>
-<title>method <code>processRawInputFormat</code></title>
-<itemizedlist>
-<listitem>
-
-<para><code>public void processRawInputFormat(File inputFile, File outputDir) throws LAPException</code>
-</para>
-<itemizedlist>
-<listitem>
-
-<para>Arguments: <code>File inputFile</code> holds the raw input XML file. <code>File     outputDir</code> holds the output directory where the resulting CAS XMI
-should be stored.  
-</para>
-</listitem>
-</itemizedlist>
-</listitem>
-</itemizedlist>
-
-<para>This method gets two <code>File</code> as arguments. First argument is a single
-input file that follows the raw input XML format (as defined in
-<xref linkend="sec-5.2"/>), and the second argument
-<code>outputDir</code> is the output directory. The method returns
-nothing. Analysis results are stored as serialized CAS files in the
-directory. (standard XMI serialization of UIMA CAS).   
-</para>
-
-<para>
-Again, the generated CASes should be well-formed and must contain all
-types can are necessary for a complete description of the entailment
-problem (i.e. all types from the <code>EXCITEMENT.entailment</code> namespace).
-</para>
-</section>
-
-<section>
-<title>method <code>addAnnotationsToCAS</code> </title>
-<itemizedlist>
-<listitem>
-
-<para><code>public void addAnnotationOn(JCas aJCas) throws LAPException</code>  
-</para>
-<itemizedlist>
-<listitem>
-
-<para>Arguments: <code>aJCas</code> holds the CAS object that will be annotated by
-the analysis pipeline. 
-</para>
-</listitem>
-<listitem>
-<para>Returns: Nothing. The JCas argument is enriched by the
-linguistic analysis annotations provided by the pipeline. 
-</para>
-</listitem>
-</itemizedlist>
-</listitem>
-<listitem>
-<para><code>public void addAnnotationOn(JCas aJCas, String viewName) throws LAPException</code>
-</para>
-<itemizedlist>
-<listitem>
-
-<para>Arguments: <code>aJCas</code> holds the CAS object that will be annotated by
-the analysis pipeline. This overridden method is for multi-view
-CASes. <code>aJCas</code> holds two or more view, where one of them has the
-view name equal to <code>viewName</code>. 
-</para>
-</listitem>
-<listitem>
-<para>Returns: Nothing. The argument JCas is enriched: one of its view
-where its name is equal to <code>viewName</code> is enriched by the
-linguistic analysis annotations provided by the pipeline. 
-</para>
-</listitem>
-</itemizedlist>
-</listitem>
-</itemizedlist>
-
-<para>The interface is a generic interface that can be called for adding
-linguistic annotations for any data.  <code>addAnnotattionOn</code> method does
-not produce CASes that are ready for EDAs. It only adds generic
-language analysis results to the provided CAS. This method provides
-users with the ability to analyze some text data that is not directly
-a TE pair.  
-</para>
-
-<para>
-The method's argument is not a string or text, but a JCas. The user
-must have some knowledge on CAS to use this interface. For example,
-they needs to know how to generate a new CAS and add text data to
-it, before calling this method. This design is intentional. The user
-needs to know about CAS data access methods beforehand, to open up and
-manually access the analysis results provided by a pipeline.
-Moreover, all entailment core interfaces that accept CAS as an
-argument accept only the EDA-compatible CASes. That is, a specific
-form and type of CASes that can be consumed by EDAs and components
-(CASes with <code>EXCITEMENT.entailment.*</code> types, and with <code>TextView</code> and
-<code>HypothesisViews</code>). 
-</para>
-
-<para>
-Thus, the <code>addAnnotationOn</code> interface (unlike
-<code>generateSingleTHPairCAS</code> or <code>processRawInputFormat</code>) produces
-"generic CASes", which can be non-EDA-compatible CASes. 
-The resulting CASes of <code>addAnnotationOn</code> are meant to be used mainly
-by the caller himself, when they require to perform linguistic
-analysis on additional data of some kind. For example, the
-Transduction layer needs to use this functionality to determine which
-sentence of a customer e-mail can be regarded as text or hypothesis,
-respectively.
-</para>
-
-<para>
-Note that <code>addAnnotationOn</code> exists in two versions: one that applies
-to the single view CAS and one that applies just a specific View
-within the CAS. The pipeline implementer must provide both of them; we
-recommend to implement <code>addAnnotationOn(JCas)</code> simply as a call of
-<code>addAnnotationOn(JCas,"_InitialView")</code> (single view CAS is a CAS with
-one view, that is implicitly named as "<subscript>InivitalView</subscript>"). 
-</para>
-
-<para>
-<code>addAnnotationOn</code> should not add any type that belongs to
-<code>EXCITEMENT.entailment.*</code> types (types related to text, hypothesis,
-pair and entailment metadata).
-</para>
-
-<para>
-An <code>LAPAccess</code> implementation must provide all three sets of methods
-defined in the interface.  
-</para>
-</section>
-</section> <!-- end of subsection LAP-interface --> 
-
-
-<section id="LAP-future">
-<title>Room for improvements with UIMA adoption</title>
-<para>There is a room for improvement for the interface, if the consortium
-decides to adopt UIMA Analysis Engines (AEs) as the basis for LAP
-components. Such improvements (such as using UIMA AE, AAE, and runtime
-to share and standardize LAP components) will be considered fully,
-after the project members have decided UIMA adoption as scheduled in
-<xref linkend="LAP-conformance"/>.  
-</para>
-</section> <!-- end of subsection LAP-future --> 
-
- 
-</section> <!-- end of lap section -->  
 
 <section>
 <title>Further Recommended Platform Policies </title>
@@ -12063,13 +12069,12 @@ holds additional information for the alignment as a string.
 <code>EXCITEMENT</code> used in this section will be interpolated with
 an actual package name in the implementation. 
 </para>
-<para> Starting from the specification version 1.1, we have attached a
-java project to the specification. You can download the
-attachement that holds all the interface codes and the type system <ulink
-url="https://dl.dropbox.com/u/13718630/codes/excitement_interface_codes_aug29.zip"><citetitle>EXCITEMENT
-SPEC 1.1 interfaces and type systems</citetitle></ulink> 
-</para>
-
+<!-- <para> Starting from the specification version 1.1, we have attached a -->
+<!-- java project to the specification. You can download the -->
+<!-- attachement that holds all the interface codes and the type system <ulink -->
+<!-- url="https://dl.dropbox.com/u/13718630/codes/excitement_interface_codes_aug29.zip"><citetitle>EXCITEMENT -->
+<!-- SPEC 1.1 interfaces and type systems</citetitle></ulink>  -->
+<!-- </para> -->
 
 <section>
 <title>Types related to entailment problems</title>
@@ -12465,134 +12470,135 @@ only permits one of the following strings: "+ / -", "+ / ?", "?
 
 </appendix> 
 
-<appendix>
-<title>Entailment Core Interfaces</title>
-<para> Starting from the specification version 1.1, we have attached a
-java source code project to the specification. You can download the
-attachement that holds all the interface codes and the type system <ulink
-url="https://dl.dropbox.com/u/13718630/codes/excitement_interface_codes_aug29.zip"><citetitle>EXCITEMENT
-SPEC 1.1 interfaces and type systems</citetitle></ulink> 
-</para>
-<para>
-Instead of listing the source codes, Appendix C now points the
-source code file names within the attached Java
-project. </para> 
-<section id="c-1"><title><code>interface EDABasic</code> and related objects</title>
-<section>
-<title><code>interface EDABasic</code></title>
-<para> See <code>EDABasic.java</code> in
-<code>eu.excitement.entailment.core</code>. </para>
-</section>
 
-<section>
-<title><code>interface TEDecision</code></title> 
-<para> See <code>TEDecision.java</code> in
-<code>eu.excitement.entailment.core</code>. </para>
-</section>
+<!-- <appendix> -->
+<!-- <title>Entailment Core Interfaces</title> -->
+<!-- <para> Starting from the specification version 1.1, we have attached a -->
+<!-- java source code project to the specification. You can download the -->
+<!-- attachement that holds all the interface codes and the type system <ulink -->
+<!-- url="https://dl.dropbox.com/u/13718630/codes/excitement_interface_codes_aug29.zip"><citetitle>EXCITEMENT -->
+<!-- SPEC 1.1 interfaces and type systems</citetitle></ulink>  -->
+<!-- </para> -->
+<!-- <para> -->
+<!-- Instead of listing the source codes, Appendix C now points the -->
+<!-- source code file names within the attached Java -->
+<!-- project. </para>  -->
+<!-- <section id="c-1"><title><code>interface EDABasic</code> and related objects</title> -->
+<!-- <section> -->
+<!-- <title><code>interface EDABasic</code></title> -->
+<!-- <para> See <code>EDABasic.java</code> in -->
+<!-- <code>eu.excitement.entailment.core</code>. </para> -->
+<!-- </section> -->
 
-<section id="c-1-DecisionLabel"><title><code>enum
-DecisionLabel</code></title>
-<para> See <code>DecisionLabel.java</code> in
-<code>eu.excitement.entailment.core</code>. </para>
-</section>
-</section>
+<!-- <section> -->
+<!-- <title><code>interface TEDecision</code></title>  -->
+<!-- <para> See <code>TEDecision.java</code> in -->
+<!-- <code>eu.excitement.entailment.core</code>. </para> -->
+<!-- </section> -->
 
-<section id="c-1.5"><title><code>interface
-SinglePairProcessHelper</code></title>
-<para> See <code>SinglePairProcessHelper.java</code> in
-<code>eu.excitement.entailment.core.helpers</code>. </para>
-</section>
+<!-- <section id="c-1-DecisionLabel"><title><code>enum -->
+<!-- DecisionLabel</code></title> -->
+<!-- <para> See <code>DecisionLabel.java</code> in -->
+<!-- <code>eu.excitement.entailment.core</code>. </para> -->
+<!-- </section> -->
+<!-- </section> -->
 
-<section id="c-2"><title><code>interface EDAMulti*</code></title>
+<!-- <section id="c-1.5"><title><code>interface -->
+<!-- SinglePairProcessHelper</code></title> -->
+<!-- <para> See <code>SinglePairProcessHelper.java</code> in -->
+<!-- <code>eu.excitement.entailment.core.helpers</code>. </para> -->
+<!-- </section> -->
 
-<section><title><code>interface EDAMultiT</code></title>
-<para> See <code>EDAMultiT.java</code> in
-<code>eu.excitement.entailment.core</code>. </para>
-</section>
+<!-- <section id="c-2"><title><code>interface EDAMulti*</code></title> -->
 
-<section><title><code>interface EDAMultiH</code></title>
-<para> See <code>EDAMultiH.java</code> in
-<code>eu.excitement.entailment.core</code>. </para>
-</section>
+<!-- <section><title><code>interface EDAMultiT</code></title> -->
+<!-- <para> See <code>EDAMultiT.java</code> in -->
+<!-- <code>eu.excitement.entailment.core</code>. </para> -->
+<!-- </section> -->
 
-<section><title><code>interface EDAMultiTH</code></title>
-<para> See <code>EDAMultiTH.java</code> in
-<code>eu.excitement.entailment.core</code>. </para>
-</section>
-</section> 
+<!-- <section><title><code>interface EDAMultiH</code></title> -->
+<!-- <para> See <code>EDAMultiH.java</code> in -->
+<!-- <code>eu.excitement.entailment.core</code>. </para> -->
+<!-- </section> -->
 
-<section id="c-3"><title><code>class MultipleTHModeHelper</code></title>
-<para> See <code>MultipleTHModeHelper.java</code> in
-<code>eu.excitement.entailment.core.helpers</code>. </para>
-</section>
+<!-- <section><title><code>interface EDAMultiTH</code></title> -->
+<!-- <para> See <code>EDAMultiTH.java</code> in -->
+<!-- <code>eu.excitement.entailment.core</code>. </para> -->
+<!-- </section> -->
+<!-- </section>  -->
 
-<section id="c-4.0">
-<title><code>interface Components</code></title>
-<para> See <code>Components.java</code> in
-<code>eu.excitement.entailment.core</code>. </para>
-</section>
+<!-- <section id="c-3"><title><code>class MultipleTHModeHelper</code></title> -->
+<!-- <para> See <code>MultipleTHModeHelper.java</code> in -->
+<!-- <code>eu.excitement.entailment.core.helpers</code>. </para> -->
+<!-- </section> -->
 
-<section id="c-4"><title><code>interface DistanceCalculation</code>
-and related objects</title>
+<!-- <section id="c-4.0"> -->
+<!-- <title><code>interface Components</code></title> -->
+<!-- <para> See <code>Components.java</code> in -->
+<!-- <code>eu.excitement.entailment.core</code>. </para> -->
+<!-- </section> -->
 
-<section><title><code>interface DistanceCalculation</code></title>
-<para> See <code>DistanceCalculation.java</code> in
-<code>eu.excitement.entailment.core.component.distance</code>. </para>
-</section>
+<!-- <section id="c-4"><title><code>interface DistanceCalculation</code> -->
+<!-- and related objects</title> -->
 
-<section><title><code>class DistanceValue</code></title>
-<para> See <code>DistanceValue.java</code> in
-<code>eu.excitement.entailment.core.component.distance</code>. </para>
-</section>
+<!-- <section><title><code>interface DistanceCalculation</code></title> -->
+<!-- <para> See <code>DistanceCalculation.java</code> in -->
+<!-- <code>eu.excitement.entailment.core.component.distance</code>. </para> -->
+<!-- </section> -->
 
-</section>
+<!-- <section><title><code>class DistanceValue</code></title> -->
+<!-- <para> See <code>DistanceValue.java</code> in -->
+<!-- <code>eu.excitement.entailment.core.component.distance</code>. </para> -->
+<!-- </section> -->
 
-<section id="c-5"><title><code>class LexicalResource</code> and
-related objects</title> 
-<section><title><code>class LexicalRule</code></title>
-<para> See <code>LexicalRule.java</code> in
-<code>eu.excitement.entailment.core.component.lexicalknowledge</code>. </para>
-</section> 
+<!-- </section> -->
 
-<section><title><code>class PartOfSpeech</code></title>
-<para> See <code>PartOfSpeech.java</code> in
-<code>eu.excitement.entailment.core.representation.parsetree</code>. </para>
-</section> 
+<!-- <section id="c-5"><title><code>class LexicalResource</code> and -->
+<!-- related objects</title>  -->
+<!-- <section><title><code>class LexicalRule</code></title> -->
+<!-- <para> See <code>LexicalRule.java</code> in -->
+<!-- <code>eu.excitement.entailment.core.component.lexicalknowledge</code>. </para> -->
+<!-- </section>  -->
 
-<section><title><code>interface RuleInfo</code></title>
-<para> See <code>RuleInfo.java</code> in
-<code>eu.excitement.entailment.core.component.lexicalknowledge</code>. </para>
-</section>
+<!-- <section><title><code>class PartOfSpeech</code></title> -->
+<!-- <para> See <code>PartOfSpeech.java</code> in -->
+<!-- <code>eu.excitement.entailment.core.representation.parsetree</code>. </para> -->
+<!-- </section>  -->
 
-<section><title><code>interface LexicalResource</code></title>
-<para> See <code>LexicalResource.java</code> in
-<code>eu.excitement.entailment.core.component.lexicalknowledge</code>. </para>
-</section>
+<!-- <section><title><code>interface RuleInfo</code></title> -->
+<!-- <para> See <code>RuleInfo.java</code> in -->
+<!-- <code>eu.excitement.entailment.core.component.lexicalknowledge</code>. </para> -->
+<!-- </section> -->
 
-</section>
+<!-- <section><title><code>interface LexicalResource</code></title> -->
+<!-- <para> See <code>LexicalResource.java</code> in -->
+<!-- <code>eu.excitement.entailment.core.component.lexicalknowledge</code>. </para> -->
+<!-- </section> -->
 
-<section id="c-6"><title><code>interface SyntacticResource</code> and
-related objects </title> 
+<!-- </section> -->
 
-<section><title><code>class SyntacticRule</code></title>
-<para> See <code>SyntacticRule.java</code> in
-<code>eu.excitement.entailment.core.component.syntacticknowledge</code>. </para>
-</section>
+<!-- <section id="c-6"><title><code>interface SyntacticResource</code> and -->
+<!-- related objects </title>  -->
 
-<section id="c-6-BasicNode"><title>class <code>BasicNode</code> and related classes</title>  
-<para> See <code>AbstractNode.java, BasicNode.java, NodeInfo.java,
-EdgeInfo.java, Info.java</code>, and other codes in
-<code>eu.excitement.entailment.core.representation.parsetree</code>. </para>
-</section>
+<!-- <section><title><code>class SyntacticRule</code></title> -->
+<!-- <para> See <code>SyntacticRule.java</code> in -->
+<!-- <code>eu.excitement.entailment.core.component.syntacticknowledge</code>. </para> -->
+<!-- </section> -->
+ 
+<!-- <section id="c-6-BasicNode"><title>class <code>BasicNode</code> and related classes</title>   -->
+<!-- <para> See <code>AbstractNode.java, BasicNode.java, NodeInfo.java, -->
+<!-- EdgeInfo.java, Info.java</code>, and other codes in -->
+<!-- <code>eu.excitement.entailment.core.representation.parsetree</code>. </para> -->
+<!-- </section> -->
 
-<section><title><code>interface SyntacticResource</code></title>
-<para> See <code>SyntacticResource.java</code> in
-<code>eu.excitement.entailment.core.component.syntacticknowledge</code>. </para>
-</section>
+<!-- <section><title><code>interface SyntacticResource</code></title> -->
+<!-- <para> See <code>SyntacticResource.java</code> in -->
+<!-- <code>eu.excitement.entailment.core.component.syntacticknowledge</code>. </para> -->
+<!-- </section> -->
 
-</section>
+<!-- </section> -->
 
-</appendix>
+<!-- </appendix> -->
 
 <appendix id="appendix_input_format">
 <title>Supported Raw Input Formats</title>
@@ -12614,8 +12620,537 @@ EdgeInfo.java, Info.java</code>, and other codes in
 </appendix> 
 
 <appendix id="list_of_changes">
-<title> List of changes per version </title>
-<para>TO BE ADDED (copy and reformat CHANGES file from GitHub repository)</para>
+<title> List of changes (version history) </title>
+<!-- <para>TO BE ADDED (copy and reformat CHANGES file from GitHub
+repository)</para> --> 
+<section>
+<title>Spec v1.1.4 to v2.0</title>
+<para>Version 2.0 is a major update, and a large amount of content has been
+added. This section only lists the name of the changes. A good
+introduction to the changes introduced in the version 2.0 can be found
+in the following slides: <ulink url="http://goo.gl/MiEO8d">new components in
+EOP open spec 2.0</ulink>.
+</para>
+<section>
+<title>Newly added sections</title>
+<itemizedlist>
+<listitem>
+<para>Context sensitive lexical resource 
+</para>
+</listitem>
+<listitem>
+<para>Phrase level knowledge resource 
+</para>
+</listitem>
+<listitem>
+<para>Annotator component in Entailment Core component 
+</para>
+</listitem>
+<listitem>
+<para>Semantic Similarity Decision algorithm 
+</para>
+</listitem>
+<listitem>
+<para>Alignment component and its type system
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section>
+<title>Added descriptions / clarifications</title>
+<itemizedlist>
+<listitem>
+<para>LAP interface section (previously, section 6 in 1.1) now merged
+  with LAP section (section 3). 
+</para>
+</listitem>
+<listitem>
+<para>All outdated information items are cleared out, or removed.  
+</para>
+</listitem>
+<listitem>
+<para>Syntactic resource interface and Syntactic Rule updated (reflecting
+  latest code development). 
+</para>
+</listitem>
+<listitem>
+<para>New introduction sub-section added, and existing introduction
+  revised. 
+</para>
+</listitem>
+</itemizedlist>
+</section>
+</section>
+
+<section>
+<title>Spec v1.1.3 to v1.1.4</title>
+<section>
+<title>Newly written subsection</title>
+<para>None. Main purpose of this release is to provide the latest Web
+version of the specification for further discussion. 
+</para>
+</section>
+
+<section>
+<title>Added descriptions / clarifications</title>
+<itemizedlist>
+<listitem>
+<para>updated coding standard to reflect latest changes, added link to
+  project Wiki coding standard page. 
+</para>
+</listitem>
+<listitem>
+<para>RTE train/test file option, task become #IMPLIED (optional) 
+</para>
+</listitem>
+<listitem>
+<para>"confidence" clarified in Lexical rule, as probability. 
+</para>
+</listitem>
+<listitem>
+<para>method close() added to both LexicalResource interface and
+  SyntacticResource. 
+</para>
+</listitem>
+<listitem>
+<para>SyntacticRule updated to reflect current upstream code. 
+</para>
+</listitem>
+</itemizedlist>
+</section>
+</section>
+
+<section>
+<title>Spec v1.1.2 to v1.1.3</title>
+<section>
+<title>Newly written subsection</title>
+<section>
+<title>Section 5.1.4 Common Configuration XML file format</title>
+<itemizedlist>
+<listitem>
+<para>XML file format is added in the specification. 
+</para>
+</listitem>
+</itemizedlist>
+</section>
+</section>
+
+<section>
+<title>Added descriptions / clarifications</title>
+<section>
+<title>Section 5.1.3. common configuration class</title>
+<itemizedlist>
+<listitem>
+<para>removed LoadConfiguration (replaced by the constructor)
+</para>
+</listitem>
+<listitem>
+<para>added a few more get/set methods, with clear notification that the
+  methods will be expanded as needed.  
+</para>
+</listitem>
+<listitem>
+<para>some minor changes according to recent WP4 discussions. 
+</para>
+</listitem>
+</itemizedlist>
+</section>
+</section>
+</section>
+
+<section>
+<title>Spec v1.1.1 to v1.1.2</title>
+<section>
+<title>Newly written section/subsections</title>
+<section>
+<title>Section Scoring Component (4.5)</title>
+<para>A generic component that provides "features". Now distance component 
+is an extension of this scoring component type. 
+</para>
+</section>
+
+<section>
+<title>Subsection "interface LexicalResourceWithRelation" (4.7.3)</title>
+<para>Now we removed TERuleRelation from LexicalRule and LexicalResource, and 
+moved them to part of "generic relational queries" of 
+LexicalResourceWithRelation. 
+It also now comes with related subsections like RelationSpecifiers. 
+</para>
+</section>
+</section>
+
+<section>
+<title>Added descriptions / clarifications</title>
+<section>
+<title>Related to new sections</title>
+<para>Related to the above three section/subsections: related figures and
+descriptions are changed in LexicalRule and DistanceComponent. 
+</para>
+</section>
+
+<section>
+<title>Changes in interface Component</title>
+<para>Now the method initialize() is removed from the interface component.  
+</para>
+</section>
+</section>
+</section>
+
+<section>
+<title>Spec v1.1 to v1.1.1</title>
+<section>
+<title>Newly written subsections</title>
+<section>
+<title>Section "Linguistic Analysis Pipeline (LAP)" added. (Sec 6)</title>
+<para>This is a new section that holds a single small subsection that
+describes interface <code>LAPAccess</code>. 
+</para>
+</section>
+
+<section>
+<title>Sub-section "Lexical Resources with Own Relations" added. (Sec 4.6.3)</title>
+<para>This is a new sub-section that describes interface
+<code>LexicalResourceWithOwnRelations</code>. 
+</para>
+</section>
+</section>
+
+<section>
+<title>Added descriptions / clarifications</title>
+<section>
+<title>Minor bug patches and clarifications</title>
+<itemizedlist>
+<listitem>
+<para>TEDecision removed from lexicalresource (was not synced with actual interface 
+</para>
+</listitem>
+</itemizedlist>
+<para>source) 
+</para>
+<itemizedlist>
+<listitem>
+<para>string DEFAULT<subscript>CONFIDENT</subscript> was corrected to double (was not synced with actual i
+</para>
+</listitem>
+</itemizedlist>
+<para>nterface) 
+</para>
+<itemizedlist>
+<listitem>
+<para>Entailment.* types are now clarified: where to be put (EntailmentMetadata and 
+</para>
+</listitem>
+</itemizedlist>
+<para>Pair in the CAS, Text in TextView, Hypothesis in HypothesisView) 
+</para>
+<itemizedlist>
+<listitem>
+<para>Metadata and Pair type supertype corrected (to TOP, was Annotation) 
+</para>
+</listitem>
+<listitem>
+<para>Clarification added on "higher confident" on TEDecision. 
+</para>
+</listitem>
+</itemizedlist>
+</section>
+</section>
+</section>
+
+<section>
+<title>Spec v1.0 to v1.1</title>
+<section>
+<title>Newly written subsections</title>
+<section>
+<title>subsection "common log" added. (#96)</title>
+<itemizedlist>
+<listitem>
+<para>In the Section 6.3
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section>
+<title>subsection "Concurrent Processing" added. (#108, #19, #45)</title>
+<itemizedlist>
+<listitem>
+<para>In the Section 4.8
+</para>
+</listitem>
+<listitem>
+<para>"multi-thread" issue. 
+</para>
+</listitem>
+<listitem>
+<para>It adds a new interface EDAConcurrentProcessing, that gets a set of
+  TE problems and return a set of TEDecisions, with concurrent
+  processing. 
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section>
+<title>subsection "Two groups of LAP components added"</title>
+<itemizedlist>
+<listitem>
+<para>In the section 3.3.4.3 
+</para>
+</listitem>
+<listitem>
+<para>Clarification section that describes, LAP components that knows TE
+  annotations, and generic components that does not. 
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section>
+<title>subsection "Other cases: T-H from multiple documents, T-H on a same document" added. (#106)</title>
+<itemizedlist>
+<listitem>
+<para>In the section 3.3.4.4 
+</para>
+</listitem>
+<listitem>
+<para>"T view / H view" naturally maps into two document (one for T, one
+  for H). The section describes how we can cope with different
+  situations like T on multiple documents, and T-H on the same
+  document. 
+</para>
+</listitem>
+<listitem>
+<para>3.3.4 generally revised = (from 3.3.4.1 to 3.3.4.4) 
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section>
+<title>subsection "Boundary of LAP and Entailment Core"</title>
+<itemizedlist>
+<listitem>
+<para>In the section 6.5 
+</para>
+</listitem>
+<listitem>
+<para>Summarizes the discussion covered untill now. 
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section>
+<title>sub-subsection "Rooms for improvment: EDA common training" added (#35, deferred issue #109 )</title>
+<itemizedlist>
+<listitem>
+<para>In the section 4.2.1.7 
+</para>
+</listitem>
+</itemizedlist>
+</section>
+</section>
+
+<section>
+<title>Added Descriptions / Clarifications (Moved sections, added a paragraph, etc)</title>
+<section>
+<title>Representation of Text and Hypothesis revised (more clear description)</title>
+<itemizedlist>
+<listitem>
+<para>Section 3.3.4.1 and 3.3.4.2 revised: From Section 3.3.4.1 to 3.3.4.4
+  worth a new reading for all readers. 
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section>
+<title>"Auxiliary Layer" section added, and some interfaces moved into it (#101)</title>
+<itemizedlist>
+<listitem>
+<para>Section 4.3 
+</para>
+</listitem>
+<listitem>
+<para>"MultipleMode helper", "SinglePairProcessHelper (previously
+  EDARawTextWithLAP)", and "InitializationHelper"  now stays in
+  "Auxiliary Layer". 
+</para>
+</listitem>
+<listitem>
+<para>#101 (Something that calls both EDA and LAP cannot be an
+  EDA interface) resolved.  EDARawTextWithLAP -&gt; overhauled as an
+  independent "helper".  
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section>
+<title>(Clarification) List of interfaces that an EDA can implement</title>
+<itemizedlist>
+<listitem>
+<para>In the section 4.2.1.8
+</para>
+</listitem>
+<listitem>
+<para>At the end of EDABasic, a short section summarizes additional
+  interfaces that an EDA can implement. It also lists the list of
+  auxilary layer interfaces. 
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section>
+<title>EDAs can now implement "Reconfigurable". (#97)</title>
+<itemizedlist>
+<listitem>
+<para>In the section 4.9.2, it also describes about EDA and reconfigurable  
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section>
+<title>(Clarification) "NonEntailment" relation of "LexicalRule" (#100).</title>
+<itemizedlist>
+<listitem>
+<para>In the section 4.6.1.2
+</para>
+</listitem>
+<listitem>
+<para>a description is added to clarify what is "NonEntailment" lexical
+  rule. (in the <code>TELexicalRelation</code> <code>NonEntailment</code> description. )  
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section>
+<title>(Clarification) About "Instance Subsection" of configuration (#105)</title>
+<itemizedlist>
+<listitem>
+<para>In the section 5.1.2
+</para>
+</listitem>
+<listitem>
+<para>a description with example is added to clarify what "instance"
+  configuration is about. 
+</para>
+</listitem>
+</itemizedlist>
+</section>
+</section>
+
+<section>
+<title>Data type fixed / expanded</title>
+<section>
+<title>BasicNode now has canonical types that reflects UIMA types (#90)</title>
+<itemizedlist>
+<listitem>
+<para>Section 4.7.1.3 and Figure 11. 
+</para>
+</listitem>
+<listitem>
+<para>enum DependencyRelationType, enum NamedEntity, enum CanonicalPosTag. 
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section>
+<title>EDA interface now becomes generic with types that extends TEDecision (#73)</title>
+<itemizedlist>
+<listitem>
+<para>TEDecision object description (removed Object returning getInfo,
+  added extension description) 
+</para>
+</listitem>
+<listitem>
+<para>Generic affected parts of EDABasic, EDAMulti*, InitializationHelper, MutipleTHModeHelper 
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section>
+<title>"relation" (canonical relation) of Lexical Resource (#89)</title>
+<itemizedlist>
+<listitem>
+<para>Section 4.6.1 (and 4.6.1.2) 
+</para>
+</listitem>
+<listitem>
+<para>it is now a new enum type of its own (<code>TELexicalRelation</code>), which
+  can hold  <code>Entailment</code> or <code>NonEntailment</code>. It no longer reuses the
+  Decision enum of EDA decision. 
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section>
+<title>EntailmentMetadata now holds additional fields</title>
+<itemizedlist>
+<listitem>
+<para>Section 3.3.4.1
+</para>
+</listitem>
+<listitem>
+<para>it now holds TextDocumentID, TextCollectionID, HypothesisDocumentID,
+  and HypothesisCollectionID. 
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section>
+<title>type EXCITEMENT.temporal.TemporalExpression expanded (#103)</title>
+<itemizedlist>
+<listitem>
+<para>Section 3.3.3.9 and Appendix A.9 
+</para>
+</listitem>
+<listitem>
+<para>We now have expanded temporal expression with subtypes according to
+  TIMEX3-like classification.  
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section>
+<title>"alignment" type now has a string feature named "type". (#80)</title>
+<itemizedlist>
+<listitem>
+<para>Section 3.3.3.10 
+</para>
+</listitem>
+<listitem>
+<para>Alignment now has a string for additional info. 
+</para>
+</listitem>
+</itemizedlist>
+</section>
+</section>
+
+<section>
+<title>Misc</title>
+<section>
+<title>All runtime type check (RTTI) removed from core interface (#36)</title>
+<itemizedlist>
+<listitem>
+<para>The only exception is JCas, where we cannot avoid using RTTI. 
+</para>
+</listitem>
+</itemizedlist>
+</section>
+</section>
+</section>
+
 </appendix>
 
 <!-- <appendix> -->
