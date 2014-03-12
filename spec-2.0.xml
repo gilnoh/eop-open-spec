@@ -127,15 +127,15 @@ targeted to Specification 1.0 Deliverable (Deliverable 3.1a). </para>
 <title>Preface to the specification version 2.0</title>
 <formalpara>
 <title>Short history of the specification</title>
-<para>EXCITEMENT open platform specification has been first published
-in June 2012. This first version defined backbones of EXCITEMENT open
-platform with major component types, data structures and conventions
-for the development of the open platform. The specification has been
-updated a few time with the actual development progress. Version 1.1
-was released in August 2012. This version  was a major update that
-provided missing parts to version 1.0, and became the blueprint for
-the platform development over 2012 and 2013. 
-The last version of specification 1.1 is <ulink
+<para>The EXCITEMENT open platform specification has been first
+published in June 2012, as version 1.0. This first version defined
+backbones of the EXCITEMENT open platform with major component types,
+data structures and conventions for the development of the open
+platform. The specification has been updated a few time during the
+actual development progress. Version 1.1 was released in August
+2012. This version  was a major update that provided missing parts to
+version 1.0, and became the blueprint for the platform development
+over 2012 and 2013. The last version of specification 1.1 is <ulink
 url="http://hltfbk.github.io/Excitement-Open-Platform/specification/spec-1.1.4.pdf">
 specification version 1.1.4</ulink>, published in October 2013. 
 <ulink url="http://hltfbk.github.io/Excitement-Open-Platform/">
@@ -149,27 +149,27 @@ platform.
 
 <formalpara>
 <title>Scope of the specification 2.0 </title>
-<para>Specification 1.0 introduced the common platform that can
+<para>Specification 1.0 introduced a common platform that can
 support different RTE (Recognizing Textual Entailment) systems on
 multiple languages. One of the main goal was (and still is) making the
 platform a paradigm-neutral platform, where various Textual Inference
-approaches can share their components. This goal was very broad, and
-hard to achieve in general. Thus, the consortium adopted a practical
-strategy of analyzing and utilizing three existing RTE systems as the
-basis. This was a very successful strategy, and delivered a
-multilingual platform with easy-to-share components. But the strategy
-also had its limits. For example, the specification did not cover some
-other RTE approaches (like alignment-based method), and its scope did
-not included support for novel research topics. In this sense, spec
-1.0 was an enabler that makes the fusion of existing three target RTE
-systems into one coherent platform.    
-We now try to broaden the scope of the open specification with the
-version 2.0 and beyond. Basically, specification 2.0 is still a linear
+approaches can share their components. This goal was very broad.
+Thus, the consortium adopted a practical strategy of analyzing and
+utilizing three existing RTE systems as the basis. This was a very
+successful strategy, and delivered a multilingual platform with
+easy-to-share components. But the strategy also had its limits. For
+example, the specification did not cover some other RTE approaches
+(like alignment-based method), and its scope did not include support
+for novel research topics. In this sense, spec 1.0 was an enabler that
+allowed us to fuse three existing RTE systems into one coherent
+platform.      
+We now broaden the scope of the open specification with the version
+2.0 and beyond. Basically, specification 2.0 is still a linear 
 extension of specification version 1.1. All the major structures, and
 components are already stable and there is no major updates on those 
 existing modules. However, Spec 2.0 also aims to achieve more than
 consolidating existing pre-EOP systems. Specification 2.0 adds
-contents to support additional data types and component types that
+content to support additional data types and component types that
 were not part of any of the existing systems. This includes alignment
 components, phrases-level resources, context sensitive lexical
 resources, and support for new Entailment Decision Algorithms
@@ -178,7 +178,8 @@ updated sections that are new to specification 2.0.
 <itemizedlist>
 <listitem><para>Context sensitive Lexical resource (<xref
 linkend="context_sensitive_lexical_resource"/>)</para></listitem> 
-<listitem><para>Phrase level knowledge resource (TODO add XREF once added) </para></listitem>
+<!-- <listitem><para>Phrase level knowledge resource (TODO add XREF
+once added) </para></listitem> --> 
 <listitem><para>Annotation component (<xref linkend="annotator_component"/>)</para></listitem>   
 <listitem><para>Alignment component and alignment CAS types (<xref
 linkend="alignment_component"/>)</para></listitem>     
@@ -190,9 +191,9 @@ Algorithm (<xref linkend="SDA" />)</para></listitem>
 component</para></listitem>   --> 
 </itemizedlist>
 Please note that other sections, such as LAP interface sections,
-configuration sections and details of syntactic resources, also got
-minor updates. For the full list of changes since the specification
-version 1.0 (Deliverable 3.1a), please see <xref
+configuration sections and details of syntactic resources, also
+received minor updates. For the full list of changes since the
+specification version 1.0 (Deliverable 3.1a), please see <xref
 linkend="list_of_changes"/>.  
 </para> 
 </formalpara>
@@ -202,9 +203,9 @@ linkend="list_of_changes"/>.
 <para>If you are reading this specification for the first time (no
 prior experience on the specification or the platform), maybe it is
 better to start with a journal paper that describes the platform in 
-general <xref linkend="jnle2013"/> . Also, UIMA part of the platform
-(type systems and UIMA module adaptation) is well summarized in a
-workshop paper <xref linkend="uimaws2013"/>. 
+general <xref linkend="jnle2013"/> . Also, The UIMA part of the
+platform (type systems and UIMA module adaptation) is well summarized
+in a workshop paper <xref linkend="uimaws2013"/>. 
 
 </para> 
 </formalpara> 
@@ -338,7 +339,8 @@ the transduction layer. This layer is part of the work towards Goal
 B. It translates between the queries posed by the industrial partners'
 use cases and entailment queries that can be answered by the open
 platform developed for Goal A. The transduction layer is described in
-a separate document (Deliverable 3.2b). 
+a separate document (Deliverable 3.2b). Note that, the EOP and TL
+specifications are compatible irrespective of releases. 
 </para>
 </section>
 </section> 
@@ -5319,7 +5321,7 @@ pair is given as the followings.
 <para>
 <programlisting>___01234567890123456789012345678901  -- CAS SOFA position
 T: John walked his dog in the park.
-H: John took hit pet for a walk.
+H: John took his pet for a walk.
 </programlisting>
 </para>
 
@@ -5495,7 +5497,7 @@ can applied to the term in its own context?".
 <para>
 <programlisting>___01234567890123456789012345678901  -- CAS SOFA position.
 T: [ don't care ]
-H: John took hit pet for a walk.
+H: John took his pet for a walk.
 </programlisting>
 </para>
 
@@ -5542,12 +5544,14 @@ where candidates is: <code>[ ("dog", noun), ("cat", noun), ... (lemma_n, pos_n) 
 <!-- end of context sensitive lexical resource --> 
 
 <!-- start of phrase level resource --> 
+<!-- 
 <section id="phrase_level_resource">
 <title>Phrase level knowledge resource</title>
 <para>
 TO BE ADDED
 </para> 
 </section>
+--> 
 <!-- end of phrase level resource --> 
 
 
@@ -12625,8 +12629,8 @@ only permits one of the following strings: "+ / -", "+ / ?", "?
 repository)</para> --> 
 <section>
 <title>Spec v1.1.4 to v2.0</title>
-<para>Version 2.0 is a major update, and a large amount of content has been
-added. This section only lists the name of the changes. A good
+<para>Version 2.0 is a major update, and a large number of new content
+has been added. This section only lists the name of the changes. A good
 introduction to the changes introduced in the version 2.0 can be found
 in the following slides: <ulink url="http://goo.gl/MiEO8d">new components in
 EOP open spec 2.0</ulink>.
@@ -12638,10 +12642,12 @@ EOP open spec 2.0</ulink>.
 <para>Context sensitive lexical resource 
 </para>
 </listitem>
+<!--
 <listitem>
 <para>Phrase level knowledge resource 
 </para>
 </listitem>
+-->
 <listitem>
 <para>Annotator component in Entailment Core component 
 </para>
