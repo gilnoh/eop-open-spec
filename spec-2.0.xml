@@ -12616,7 +12616,7 @@ only permits one of the following strings: "+ / -", "+ / ?", "?
 &lt;!ATTLIST pair
           id CDATA #REQUIRED
           entailment (ENTAILMENT|NONENTAILMENT|CONTRADICTION|
-                          PARAPHRASE|UNKNOWN) #REQUIRED
+                          PARAPHRASE|UNKNOWN) #IMPLIED
           task (IR|IE|QA|SUM) #IMPLIED &gt;
 &lt;!ELEMENT t (#PCDATA)&gt;
 &lt;!ELEMENT h (#PCDATA)&gt;
