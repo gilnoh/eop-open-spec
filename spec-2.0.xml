@@ -17,7 +17,7 @@ href="file://./stylesheets/oasis-specification-html-offline.xsl"?>
 <!ENTITY this-loc "http://hltfbk.github.io/Excitement-Open-Platform/specification/spec-&version;"> 
 <!ENTITY previous-loc "http://hltfbk.github.io/Excitement-Open-Platform/specification/spec-&version;"> 
 <!ENTITY latest-loc "http://hltfbk.github.io/Excitement-Open-Platform/specification/spec-&version;"> 
-<!ENTITY pubdate "10 March 2014">
+<!ENTITY pubdate "14 March 2014">
 ]>
 
 <article status="&stage;">
