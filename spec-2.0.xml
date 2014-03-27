@@ -194,7 +194,16 @@ Please note that other sections, such as LAP interface sections,
 configuration sections and details of syntactic resources, also
 received minor updates. For the full list of changes since the
 specification version 1.0 (Deliverable 3.1a), please see <xref
-linkend="list_of_changes"/>.  
+linkend="list_of_changes"/>. 
+</para> 
+</formalpara>
+<formalpara>
+<title>Definitions of terms and acronyms</title> 
+<para> The specification uses some handful amounts of terms and
+acronyms like <code>Entailment Core</code>, <code>EDA</code>,
+<code>LAP</code>, and so on. We prepared a section for terminology in
+<xref linkend="terminology"/>, where you can find most of the
+definitions of the terminologies used in the specification. 
 </para> 
 </formalpara>
 
@@ -300,7 +309,7 @@ approach to textual entailment recognition (FBK) <biblioref linkend="report_EDIT
 </itemizedlist>
 </para>
 
-<para>The role of this document is to meet the third goal -- to
+<para>The role of this document is to meet the fifth goal -- to
 provide a specification of the EXCITEMENT platform. Our goal for the
 specification is to be as general as possible (in order to preserve
 the goal of generality) while remaining as specific as necessary (to
@@ -489,7 +498,7 @@ with all its issues resolved. } </para> -->
       <!-- </section> -->
 
 
-    <section><title>Concepts and Terminology</title>
+    <section id="terminology"><title>Concepts and Terminology</title>
        <section> <title>Key words</title>
           <para>The key words <glossterm>must</glossterm>, <glossterm>must
 	  not</glossterm>, <glossterm>required</glossterm>,
@@ -5226,11 +5235,11 @@ keep the names in component implementations.
 <title>Context Sensitive Lexical Resource</title>
 <section>
 <title>Basic requirements</title>
-<para>The lexical resource interface (<code>LexicalResource</code>) is imported from 
-BIUTEE to EOP, and it is well-tested by both BIUTEE and other EOP
-EDAs. It is expanded to include "resource-specific" relations
-(LexicalResourceWithOwnRelation) if a resource can support, and
-currently the interfaces are quite stable. 
+<para>The lexical resource interface (<code>LexicalResource</code>) is
+imported from BIUTEE to EOP, and it is well-tested by both BIUTEE and
+other EOP EDAs. It is expanded to include "resource-specific"
+relations (LexicalResourceWithOwnRelation) if a resource can support
+such relations. The interfaces are stable with many implementations. 
 </para>
 
 <para>
@@ -5306,11 +5315,11 @@ one that can pass two contexts (both of Text and Hypothesis), while
 </para>
 <section>
 <title>method <code>getRules</code> family added by <code>LexicalResourceWithContext</code></title>
-<para>List&lt;LexicalRule&lt;? extends I&gt;&gt; getRules(String leftLemma,
-PartOfSpeech leftPos, String rightLemma, PartOfSpeech rightPos, JCas
-context, int lemmaLBegin, int lemmaRBegin,
+<para><code>List&lt;LexicalRule&lt;? extends I&gt;&gt; getRules(String
+leftLemma, PartOfSpeech leftPos, String rightLemma, PartOfSpeech
+rightPos, JCas context, int lemmaLBegin, int lemmaRBegin,
 List&lt;Tuple&lt;String,PartOfSpeech&gt;&gt; candidates) throws
-LexicalResourceException;
+LexicalResourceException; </code> 
 </para>
 
 <para>
@@ -5514,7 +5523,7 @@ Example #1. <code>getRulesForRight("pet", noun, aJCas, 14, null)</code>
 </itemizedlist>
 <para>
 Example #2. <code>getRulesForRight("pet", noun, aJCas, 14, candidates)</code>
-where candidates is: <code>[ ("dog", noun), ("cat", noun), ... (lemma_n, pos_n) ]</code>
+where candidates are: <code>[ ("dog", noun), ("cat", noun), ... (lemma_n, pos_n) ]</code>
 </para>
 <itemizedlist>
 <listitem>
@@ -5526,13 +5535,13 @@ where candidates is: <code>[ ("dog", noun), ("cat", noun), ... (lemma_n, pos_n) 
 </itemizedlist>
 <para>
 Example #3. <code>getRulesForRight(null, null, aJCas, 14, candidates)</code>
-where candidates is: <code>[ ("dog", noun), ("cat", noun), ... (lemma_n, pos_n) ]</code>
+where candidates are: <code>[ ("dog", noun), ("cat", noun), ... (lemma_n, pos_n) ]</code>
 </para>
 <itemizedlist>
 <listitem>
 <para>get me rules where the possible candidates are given as
   <code>candidates</code>, that can be used in the aJCas Hypothesis pos 16. Note
-  that this call does not specify lemma of left!
+  that this call does not specify lemma of left hand side!
 </para>
 </listitem>
 </itemizedlist>
@@ -5554,65 +5563,73 @@ TO BE ADDED
 --> 
 <!-- end of phrase level resource --> 
 
-
 <!-- start of annotator & alignment --> 
 <section id="annotator_component">
 <title>Annotator component</title>
 <section>
 <title>Description</title>
-<para>As described in the section 3 (LAP and type system), EOP relies on CAS
-as the main data structure to keep various levels of annotations. From
-LAP level, they are generic language processing results like POS,
-lemma, syntactic dependencies, NER, SLR and etc. As described in the
-section, CAS type system can express (with new extensions and
-additions of types), and add almost any data related to the input
-pair.  
+<para>As described in the section 3 (LAP and type system), EOP relies
+on CAS as the main data structure to keep various levels of
+annotations. From LAP level, CAS holds generic language processing 
+results like POS, lemma, syntactic dependencies, NER, and so on. 
 </para>
-
 <para>
-The expressive power of CAS and its annotations are not limited to
-generic processing like parsing, or SLR. For example, consider a new
+The expressive power of CAS is not limited to generic language
+processing. They can also represent entailment-specific, or
+task-specific data types. For example, alignment annotation between
+Text and Hypothesis can be represented in CAS. This annotation, unlike
+generic LAP annotation, knows about the task and task-specific data,
+like Entailment pair, text side and hypothesis side, and so on. 
+</para> 
+<!-- 
+For example, consider a new
 annotation type that annotates partial entailment relation, or
 partial contradiction relations. Imagine that the component is able
 to determine partial contradiction with some confidence. (say, the
 time duration of the adverb phrase of the text cannot match another
 adverb phrase in hypothesis, etc). This type of information should
 be determined and passed to the total (full) entailment decision
-algorithm. If we want to express such data, in a common way, which
+algorithm. 
+--> 
+<!-- If we want to express such data, in a common way, which
 would be the best within the platform? As annotations within CAS, is a
-natural data type for such a component. The component analyzes the
-given CAS, determines what the component is supposed to do, and add
-what is determined by the component in terms of specific annotations
-(e.g. in the above example, phrase level contradiction). 
-</para>
+natural data type for such a component. --> 
+<!-- 
+In this sense, the component analyzes the given CAS, determines what
+the component is supposed to do, and add what is determined by the
+component in terms of specific annotations (e.g. in the above example,
+phrase level contradiction).  
+--> 
 
 <para>
-We define this kind of component as a separate type of component, and
-call it the Annotator component. An annotator component gets one CAS,
-analyzes the given CAS and add additional information in forms
-annotation. The added annotation gives extra information for EDAs,
-which would help EDA's decision on entailment. 
+We define this kind of component as a separate type of Entailment Core
+component, and call it the Annotator component. An annotator component
+gets one CAS, analyzes the given CAS and add additional information in forms
+annotation. The added annotation gives extra information for EDAs
+and/or other components, where the information helps EDA's decision on
+entailment. 
 </para>
 
 <para>
 What is the difference between a <code>AnnotatorComponent</code> and a LAP
 component? It seems that both adds annotations in CAS. The following
-list outlines the major differences. In general, we expect it would
+list outlines the major differences. 
+<!-- In general, we expect it would
 be easy to figure out where a new annotation adding module to be
-added. 
+added.  --> 
 </para>
 <itemizedlist>
 <listitem>
 <para>LAP components annotator provides generic annotations, such as POS,
-  NER and syntactic structures. Annotator component provides more
-  textual entailment specific annotations. 
+  NER and syntactic structures. Annotator component provides 
+  task specific (textual entailment specific) annotations. 
 </para>
 </listitem>
 <listitem>
 <para>LAP annotates each view separately, each as a text. Annotator
-  component annotate the given CAS as a T-H pair (or
+  component annotates the given CAS as a T-H pair (or
   pairs). Annotator component treats the CAS as entailment pair data,
-  not just two set of textual input. 
+  not just two sets of textual input.  
 </para>
 </listitem>
 <listitem>
@@ -5624,8 +5641,8 @@ added.
 </itemizedlist>
 <para>
 We also define sub-types of Annotator component, to identify annotator
-components by their types and roles. In the version 2.0 of the
-specification, only the <code>AlignmentComponent</code> is the subtype of
+components by their types and roles. For example, the
+<code>AlignmentComponent</code> is the subtype of
 <code>AnnotatorComponent</code>. 
 </para>
 </section>
@@ -5637,8 +5654,8 @@ specification, only the <code>AlignmentComponent</code> is the subtype of
 <itemizedlist>
 <listitem>
 <para><code>public void annotate(JCas aJCas)</code>: the method gets one JCas. Once
-  the annotate process is done, the given JCas enriched by the added
-  layer of annotations. If the annotator component was not able to
+  the annotate process is done, the given JCas is enriched by the
+  added layer of annotations. If the annotator component was not able to
   add annotations (for example, needed LAP annotation like lemma was
   missing, or some failure of activating resources, etc), the
   component must raise a proper exception. If the call is successfully 
@@ -5672,20 +5689,21 @@ section.
 
 <section id="alignment_cas_type">
 <title>CAS types for Alignment annotation</title>
-<para>Spec 1.1 defined <code>AlignedText</code> CAS type. The type had been designed to
+<para>Spec 1.1 defined <code>AlignedText</code> CAS type. The type had
+been designed to 
 express surface level of alignments (token, and phrase levels). The
-simple type was good for those, but it is not appropriate for aligning
-more complex annotations, such as nodes, trees, graphs, or any future
-data that will be added for EOP CASes.  
+simple type was good for surface types, but it is not appropriate for
+aligning more complex ones, such as nodes, trees, graphs, or any
+future data that will be added for EOP CASes.  
 In this section, we define a new, more general annotation types. The
 new types are designed for alignment representation on any
-annotations. 
+annotation. 
 </para>
 
 <para>
-The design goal for the new types are permitting maximum flexibility, 
-while maintaining simple types that is generic enough. We define two
-types for this. 
+The design goal behind the choice to add new annotation type, is to
+keep the maximum flexibility while maintaining simple types that are
+generic enough. We define two types for this purpose. 
 </para>
 <itemizedlist>
 <listitem>
@@ -5702,8 +5720,8 @@ types for this.
 </para>
 </listitem>
 <listitem>
-<para>The purpose is to allow dynamic alignment of material, including
-    structures made by multiple annotations. 
+<para>The target type allows flexible alignment between any data,
+including structures made by multiple annotations.   
 </para>
 </listitem>
 </itemizedlist>
@@ -5726,9 +5744,11 @@ types for this.
 </itemizedlist>
 <para>
 We make no assumptions regarding what annotations are aligned by
-<code>Link</code> and <code>Target</code> annotations. One <code>Target</code> can be linked by an
-arbitrary number of <code>Link</code>, also a <code>Target</code> can group an arbitrary
-number of <code>Annotations</code>. Note that <code>uima.tcas.Annotation</code> is the
+<code>Link</code> and <code>Target</code> types. One
+<code>Target</code> can be linked by an arbitrary number of
+<code>Link</code>, also a <code>Target</code> can group an arbitrary
+number of <code>Annotations</code>. Note that
+<code>uima.tcas.Annotation</code> is the 
 super type of almost all CAS annotation data. Since a <code>Target</code> can
 group <code>Annotation</code>, it can group any type of annotations in CAS. 
 </para>
@@ -5819,11 +5839,11 @@ behavior, before using the types.
 </para>
 </listitem>
 <listitem>
-<para><code>type</code> (<code>String</code>): a string that describe the type of the
-    link. (e.g. "Lexical Alignment", "Dependency Sub-tree", etc). Note
-    that we do not attempt to group types of different
-    alignments. The <code>type</code> is merely a string, that identifies what
-    kind of module added the link. 
+<para><code>type</code> (<code>String</code>): a string that describes
+the type of the     link. (e.g. "Lexical Alignment", "Dependency
+Sub-tree", etc). Note     that we do not attempt to group types of
+different     alignments. The <code>type</code> is merely a string,
+that identifies what     kind of module added the link.  
 </para>
 </listitem>
 <listitem>
@@ -5905,7 +5925,7 @@ this way. An example is alignment-based approach. Alignment is an
 essential step for alignment-based RTE systems. This monolingual
 alignment process can be expressed as a component (as explained in
 annotation component) that can be used by multiple EDAs, or as of
-aligner module itself. Which means that trained parameters of the
+aligner module itself. This means the trained parameters of the
 component is independent to a specific EDA, and it should be saved as
 its own model. 
 </para>
@@ -5915,7 +5935,7 @@ our definition of the training method on EDA. We define a common
 starting point for training. Each component that can produce a model
 and training capability should implement the <code>Trainable</code>
 interface. This interface provides a common entry point for
-initiating the training process. Each training process (and their
+starting the training process. Each training process (and their
 required data) can vary greatly. Those varying options will be
 provided in the configuration. 
 </para>
@@ -5925,7 +5945,7 @@ Note that we do not define common model storage methods (e.g. what to
 save, where to save, what kind of format the model file has,
 etc). This is provided by each component, and each component that
 provides this interface must document the required configurable values
-in its JavaDoc documents. Thus, this interface only provides common
+in its JavaDoc documents. Thus, this interface only provides a common
 starting point for training. Although this is a minimal contract, the
 interface enables several common behavior. 
 </para>
@@ -5972,8 +5992,8 @@ does not need to comeback to "prediction (or work)" mode. For
 example, let's assume we have an alignment component. Normal
 (prediction) mode call would be <code>annotate()</code> method as defined in the
 alignment component. However, Once <code>startTraining()</code> method is called
-and model is saved via the method, the instance do not need to be
-able to process further <code>annotate()</code> call. Component writers can
+and the model is saved via the method, the instance do not need to be
+able to process further <code>annotate()</code> calls. Component writers can
 consider <code>startTraining()</code> as a one-way mode change command for the
 component to training mode. This assumption is added to make actual
 implementation of trainable components simpler. 
@@ -6038,9 +6058,9 @@ components and modules that might benefit both communities.
 <title>Supporting STS system in EXCITEMENT platform</title>
 <para>In the specification version 2.0, we start supporting STS systems by
 first adopting the top level interfaces. 
-By top level, it means the same level as EDA level. The following
-figure shows the conceptual drawing of where the newly defined
-top-level STS module lies. 
+By top level, we mean the same level as the EDA level. The following
+figure shows the conceptual drawing that illustrates where the newly
+defined top-level STS module lies. 
 </para>
 
 <figure id="sda_flow">
@@ -6164,7 +6184,7 @@ defines two methods.
 <para>Please note that for the moment (ver. 2.0), we only have top-level
 STS support only. The specification 2.0 is yet to resolve the
 component reusing issue. It is not so simple to actually reuse
-EXCITEMENT core components in SDA. This is because of the fact that
+EXCITEMENT core components in SDA. The main reason for this is that
 many component types implicitly assumes T -&gt; H directional
 processing. For example, Lexical resources and Syntactic resources are
 asymmetric from its very definition. (LHS entails RHS.) It is also
