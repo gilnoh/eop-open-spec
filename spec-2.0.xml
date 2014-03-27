@@ -8,7 +8,7 @@ href="file://./stylesheets/oasis-specification-html-offline.xsl"?>
 "./docbook/docbookx.dtd"
 [
 <!--the document properties-->
-<!ENTITY name "Excitement Open Platform Specification (DRAFT)">
+<!ENTITY name "Excitement Open Platform Specification">
 <!ENTITY pversion "2.0">
 <!ENTITY version "2.0.0">
 <!ENTITY stage "specification">
